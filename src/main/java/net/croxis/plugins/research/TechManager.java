@@ -252,5 +252,10 @@ public class TechManager {
 		SQLPlayer sqlplayer = getSQLPlayer(player);
 		return sqlplayer.getCurrentPoints();
 	}
+	
+	public static Tech getCurrentResearch(Player player){
+		SQLPlayer sqlplayer = getSQLPlayer(player);
+		return techs.get(sqlplayer.getCurrentResearch());
+	}
 
 }
