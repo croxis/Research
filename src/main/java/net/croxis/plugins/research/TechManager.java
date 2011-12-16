@@ -191,6 +191,9 @@ public class TechManager {
 				return false;
 		}
 		
+		if(sqlplayer.getCurrentResearch() != null)
+			sqlplayer.setCurrentPoints(0);
+		
 		sqlplayer.setCurrentResearch(tech.name);
 		plugin.getDatabase().save(sqlplayer);
 		//TODO: Check if enough points to complete tech.
@@ -243,6 +246,11 @@ public class TechManager {
 			ts.add(techs.get(techName));
 		}
 		return ts;
+	}
+	
+	public static int getPoints(Player player){
+		SQLPlayer sqlplayer = getSQLPlayer(player);
+		return sqlplayer.getCurrentPoints();
 	}
 
 }
