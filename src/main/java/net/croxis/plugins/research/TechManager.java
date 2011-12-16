@@ -197,5 +197,52 @@ public class TechManager {
 		
 		return true;
 	}
+	
+	public static boolean canResearch(Player player, Tech tech){
+		return getAvailableTech(player).contains(tech);
+	}
+	
+	/**
+	 * Returns a list of Techs that a player can research next
+	 * @param player
+	 * @return
+	 */
+	public static ArrayList<Tech> getAvailableTech(Player player){
+		ArrayList<Tech> unknowns = new ArrayList<Tech>();
+		ArrayList<Tech> available = new ArrayList<Tech>();
+		ArrayList<Tech> researched = getResearched(player);
+		for(Tech t : techs.values()){
+			if(!researched.contains(t))
+				unknowns.add(t);
+		}
+		
+		for(Tech t : unknowns){
+			boolean avail = true;
+			for(Tech parent : t.parents){
+				if(!available.contains(parent));
+				avail = false;
+			}
+			if(avail)
+				available.add(t);
+		}
+		return available;
+		
+	}
+	
+	/**
+	 * Returns a list of technologies the player has learned
+	 * @param player
+	 * @return
+	 */
+	public static ArrayList<Tech> getResearched(Player player){
+		SQLPlayer sqlplayer = getSQLPlayer(player);
+		String learned = sqlplayer.getResearched();
+		String[] ll = learned.split(",");
+		ArrayList<Tech> ts = new ArrayList<Tech>();
+		for (String techName : ll){
+			ts.add(techs.get(techName));
+		}
+		return ts;
+	}
 
 }

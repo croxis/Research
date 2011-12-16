@@ -55,9 +55,9 @@ public class Research extends JavaPlugin {
         logInfo("Loaded default permissions. Now loading techs.");
         
         // To make this work better I am creating a root node that all starting techs link to
-        Tech t = new Tech();
-        t.name = "root";
-        TechManager.techs.put("root", t);
+        //Tech t = new Tech();
+        //t.name = "root";
+        //TechManager.techs.put("root", t);
         
         
         // Load tech config
@@ -93,10 +93,10 @@ public class Research extends JavaPlugin {
         
         for (Tech tech : techManager.techs.values()){
         	// Check if it is a starting tech
-        	if(tech.preReqs.isEmpty()){
-        		tech.parents.add(techManager.techs.get("root"));
-        		techManager.techs.get("root").children.add(tech);
-        	} else {
+        	//if(tech.preReqs.isEmpty()){
+        	//	tech.parents.add(techManager.techs.get("root"));
+        	//	techManager.techs.get("root").children.add(tech);
+        	//} else {
         		for(String parentName : tech.preReqs){
         			if(techManager.techs.containsKey(parentName)){
         				tech.parents.add(techManager.techs.get(parentName));
@@ -105,9 +105,9 @@ public class Research extends JavaPlugin {
         				this.logWarning("Could not link " + tech.name + " with " + parentName + ". One of them is malformed!");
         			}
         		}
-        	}
+        	//}
         }
-        logInfo("Tech tree linking complete. Mounting database.");
+        logInfo("Tech tree linking complete. Mounting player database.");
         setupDatabase();
         logInfo("Database mounted. Setup complete.");
         

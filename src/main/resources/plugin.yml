@@ -7,3 +7,6 @@ main: net.croxis.plugins.research.Research
 name: Research
 startup: postworld
 version: '1'
+commands:
+  research:
+    description: technology tree
