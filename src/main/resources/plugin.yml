@@ -1,0 +1,9 @@
+author: croxis
+database: true
+description: A permission plugin where user permissions are granted based on technology
+  the user has researched. An external plugin is required to grant techs.
+generator: http://dinnerbone.com/minecraft/tools/pluginator/
+main: net.croxis.plugins.research.Research
+name: Research
+startup: postworld
+version: '1'

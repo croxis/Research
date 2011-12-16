@@ -1,0 +1,40 @@
+# Technology tree
+# Name of the tech. Changing the name after researched can cause breakage
+Agriculture:
+  # A short description to explain what this technology does, explains in game
+  description: "Allows the planting of seeds"
+  # Cost is a somewhat arbitrary number on the price of this tech
+  cost: 100
+  # Prerequs are the techs needed to research this technology
+  prereqs: []
+  #- Tech Name 1
+  #- Second Tech Name
+  # Permission nodes gained when the players earns this tech
+  permissions:
+  - a.permission.node
+  - another.one
+  # These allow the place/break/use of items
+  canplace:
+  - 295
+  - 362
+  - 372
+  - 361
+  canbreak: []
+  # These features require spout
+  spout:
+    cancraft: []
+  Custom events not yet available. This is for situations like a tech giving a town 10 free bonus chunks or something that is plugin specific. 
+  customEvents: []
+#
+# An alternative format
+# Note that no specific field is required other than cost
+#
+Mining:
+  cost: 100
+  canbreak: [1, 4, 13, 14, 15, 16, 21, 22, 24, 48, 49, 56, 73, 74, 87, 89, 97, 121]
+Stone Working:
+  cost: 200
+  prereqs: [Mining]
+  canplace: [1, 4]
+  
+  
