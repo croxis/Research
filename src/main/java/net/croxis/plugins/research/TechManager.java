@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.PermissionAttachment;
 
 /**
  * @author croxis
@@ -43,7 +44,15 @@ public class TechManager {
 	}
 	
 	public static void unloadPlayer(Player player){
-		//TODO: Remove permission nodes
+		SQLPlayer sqlplayer = getSQLPlayer(player);
+		PermissionAttachment att = player.addAttachment(plugin);
+		for(String techName : sqlplayer.getResearched().split(",")){
+			Tech tech = techs.get(techName);
+			for (String perm : tech.permissions){
+				att.setPermission(perm, false);
+			}
+		}
+		player.recalculatePermissions();
 		players.remove(player);
 	}
 	
@@ -108,6 +117,11 @@ public class TechManager {
 		rplayer.cantCraft.removeAll(tech.canPlace);
 		rplayer.permissions.addAll(tech.permissions);
 		//TODO: Process permission nodes
+		PermissionAttachment att = player.addAttachment(plugin);
+		for(String perm : tech.permissions){
+			att.setPermission(perm, true);
+		}
+		player.recalculatePermissions();
 	}
 	
 	/**
