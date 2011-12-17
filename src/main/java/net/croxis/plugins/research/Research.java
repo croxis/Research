@@ -15,6 +15,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.event.Event.Type;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Research extends JavaPlugin {
@@ -114,9 +115,16 @@ public class Research extends JavaPlugin {
         
         // This should be it. Permission setups should happen onPlayerJoin
         
+        // Test for spout
+        Plugin test = getServer().getPluginManager().getPlugin("Spout");
+        if (test == null)
+        	this.useSpout = false;
+        
         this.getServer().getPluginManager().registerEvent(Type.PLAYER_JOIN, new RPlayerListener(this), Priority.Normal, this);
         this.getServer().getPluginManager().registerEvent(Type.BLOCK_BREAK, blockListener, Priority.Highest, this);
         this.getServer().getPluginManager().registerEvent(Type.BLOCK_PLACE, blockListener, Priority.Highest, this);
+        if(useSpout)
+        	this.getServer().getPluginManager().registerEvent(Type.CUSTOM_EVENT, new RInventoryListener(), Priority.Highest, this);
         
         System.out.println(this + " is now enabled!");
     }
