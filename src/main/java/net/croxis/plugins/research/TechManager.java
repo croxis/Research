@@ -169,6 +169,7 @@ public class TechManager {
 			sqlplayer = new SQLPlayer();
 			sqlplayer.setPlayerName(player.getName());
 			sqlplayer.setCurrentPoints(0);
+			sqlplayer.setResearched("");
 			plugin.getDatabase().save(sqlplayer);
 		}
 		return sqlplayer;
@@ -240,8 +241,8 @@ public class TechManager {
 	public static ArrayList<Tech> getResearched(Player player){
 		SQLPlayer sqlplayer = getSQLPlayer(player);
 		String learned = sqlplayer.getResearched();
-		String[] ll = learned.split(",");
 		ArrayList<Tech> ts = new ArrayList<Tech>();
+		String[] ll = learned.split(",");
 		for (String techName : ll){
 			ts.add(techs.get(techName));
 		}

@@ -17,6 +17,7 @@ public class SQLPlayer {
 	@NotNull
 	private int currentPoints;
 	private String currentResearch;
+	@NotNull
 	private String researched;
 	public int getId() {
 		return id;
