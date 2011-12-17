@@ -11,10 +11,10 @@ public class RPlayerListener extends PlayerListener{
 		this.plugin = plugin;
 	}
 
-
-
 	@Override
     public void onPlayerJoin(PlayerJoinEvent event) {
-        event.getPlayer().sendMessage("Research placeholder.");
+		if(event.getPlayer().hasPermission("research"))
+			event.getPlayer().sendMessage("You currently know " + TechManager.getAvailableTech(event.getPlayer()) + "technologies" +
+        		" and are currently researching " + TechManager.getCurrentResearch(event.getPlayer()).name + ".");
     }
 }

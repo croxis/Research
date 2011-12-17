@@ -28,6 +28,7 @@ public class Research extends JavaPlugin {
 	
 	private FileConfiguration techConfig = null;
 	private File techConfigFile = new File(getDataFolder(), "tech.yml");
+	private RBlockListener blockListener = new RBlockListener();
 	
     public void onDisable() {
         // TODO: Place any custom disable code here.
@@ -114,6 +115,8 @@ public class Research extends JavaPlugin {
         // This should be it. Permission setups should happen onPlayerJoin
         
         this.getServer().getPluginManager().registerEvent(Type.PLAYER_JOIN, new RPlayerListener(this), Priority.Normal, this);
+        this.getServer().getPluginManager().registerEvent(Type.BLOCK_BREAK, blockListener, Priority.Highest, this);
+        this.getServer().getPluginManager().registerEvent(Type.BLOCK_PLACE, blockListener, Priority.Highest, this);
         
         System.out.println(this + " is now enabled!");
     }
