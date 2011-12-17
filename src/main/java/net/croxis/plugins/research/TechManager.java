@@ -247,6 +247,9 @@ public class TechManager {
 		SQLPlayer sqlplayer = getSQLPlayer(player);
 		String learned = sqlplayer.getResearched();
 		ArrayList<Tech> ts = new ArrayList<Tech>();
+		if(learned.equalsIgnoreCase(""))
+			return ts;
+		
 		String[] ll = learned.split(",");
 		for (String techName : ll){
 			ts.add(techs.get(techName));
@@ -260,7 +263,6 @@ public class TechManager {
 	}
 	
 	public static Tech getCurrentResearch(Player player){
-		System.out.println("testestest");
 		SQLPlayer sqlplayer = getSQLPlayer(player);
 		return techs.get(sqlplayer.getCurrentResearch());
 	}
