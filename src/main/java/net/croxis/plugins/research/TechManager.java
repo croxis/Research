@@ -81,7 +81,11 @@ public class TechManager {
 		
 		if(currentPoints >= tech.cost){
 			applyLearnedTech(player, tech);
-			sqlplayer.setCurrentResearch(sqlplayer.getCurrentResearch() + "," + tech.name);
+			String researched = sqlplayer.getResearched();
+			if (researched.isEmpty())
+				sqlplayer.setResearched(tech.name);
+			else
+				sqlplayer.setResearched(researched + "," + tech.name);
 			sqlplayer.setCurrentPoints(currentPoints - tech.cost);
 			sqlplayer.setCurrentResearch(null);
 			plugin.getDatabase().save(sqlplayer);
