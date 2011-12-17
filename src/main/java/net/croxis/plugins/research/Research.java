@@ -125,6 +125,8 @@ public class Research extends JavaPlugin {
         this.getServer().getPluginManager().registerEvent(Type.BLOCK_PLACE, blockListener, Priority.Highest, this);
         if(useSpout)
         	this.getServer().getPluginManager().registerEvent(Type.CUSTOM_EVENT, new RInventoryListener(), Priority.Highest, this);
+        else
+        	this.logWarning("Spout is not in use. Please get spout for maximum enjoyment");
         
         System.out.println(this + " is now enabled!");
     }

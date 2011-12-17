@@ -10,3 +10,4 @@ version: '1'
 commands:
   research:
     description: technology tree
+softdepend: ["Spout"]

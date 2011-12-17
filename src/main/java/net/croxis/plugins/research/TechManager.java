@@ -164,7 +164,7 @@ public class TechManager {
 	 * @return
 	 */
 	public static SQLPlayer getSQLPlayer(Player player){
-		SQLPlayer sqlplayer = plugin.getDatabase().find(SQLPlayer.class).where().ieq("name", player.getName()).findUnique();
+		SQLPlayer sqlplayer = plugin.getDatabase().find(SQLPlayer.class).where().ieq("player_name", player.getName()).findUnique();
 		if (sqlplayer == null){
 			sqlplayer = new SQLPlayer();
 			sqlplayer.setPlayerName(player.getName());
