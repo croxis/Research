@@ -7,8 +7,8 @@ public class RPlayer {
 	//public String cantplace = "";
 	//public String cantbuild = "";
 	//public String cantcraft = "";
-	public ArrayList<String> cantPlace = new ArrayList<String>();
-	public ArrayList<String> cantBreak = new ArrayList<String>();
-	public ArrayList<String> cantCraft = new ArrayList<String>();
+	public ArrayList<Integer> cantPlace = new ArrayList<Integer>();
+	public ArrayList<Integer> cantBreak = new ArrayList<Integer>();
+	public ArrayList<Integer> cantCraft = new ArrayList<Integer>();
 	public ArrayList<String> permissions = new ArrayList<String>();
 }
