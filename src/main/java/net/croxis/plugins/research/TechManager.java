@@ -120,6 +120,8 @@ public class TechManager {
 	 * @param tech
 	 */
 	public static void applyLearnedTech(Player player, Tech tech){
+		if(tech == null)
+			return;
 		RPlayer rplayer = players.get(player);
 		rplayer.cantPlace.removeAll(tech.canPlace);
 		rplayer.cantBreak.removeAll(tech.canPlace);
