@@ -50,10 +50,10 @@ public class Research extends JavaPlugin {
     	techManager = new TechManager(this);
     	// Set up default systems
     	useSpout = this.getConfig().getBoolean("useSpout", false);
-    	permissions = (ArrayList<String>) this.getConfig().getStringList("default.cantPlace");
-    	cantPlace = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantPlace");
-    	cantBreak = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantBreak");
-    	cantCraft = (ArrayList<Integer>) this.getConfig().getIntegerList("default.spout.cantCraft");
+    	permissions = (ArrayList<String>) this.getConfig().getStringList("default.permissions");
+    	cantPlace = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantplace");
+    	cantBreak = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantbreak");
+    	cantCraft = (ArrayList<Integer>) this.getConfig().getIntegerList("default.spout.cantcraft");
     	this.getConfig().options().copyDefaults(true);
         saveConfig();
         logInfo("Loaded default permissions. Now loading techs.");
