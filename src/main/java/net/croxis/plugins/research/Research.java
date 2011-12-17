@@ -21,10 +21,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Research extends JavaPlugin {
 	static TechManager techManager;
 	public boolean useSpout = false;
-	public List permissions;
-	public List cantPlace;
-	public List cantBreak;
-	public List cantCraft;
+	public ArrayList<String> permissions = new ArrayList<String>();
+	public ArrayList<Integer> cantPlace = new ArrayList<Integer>();
+	public ArrayList<Integer> cantBreak = new ArrayList<Integer>();
+	public ArrayList<Integer> cantCraft = new ArrayList<Integer>();
 	public Logger logger;
 	
 	private FileConfiguration techConfig = null;
@@ -44,14 +44,16 @@ public class Research extends JavaPlugin {
     	logger.log(Level.WARNING, "[Research] " + message);
     }
 
-    public void onEnable() {
+    @SuppressWarnings("unchecked")
+	public void onEnable() {
     	logger = Logger.getLogger(JavaPlugin.class.getName());
     	techManager = new TechManager(this);
     	// Set up default systems
     	useSpout = this.getConfig().getBoolean("useSpout", false);
-    	cantPlace = this.getConfig().getStringList("default.cantPlace");
-    	cantBreak = this.getConfig().getStringList("default.cantBreak");
-    	cantCraft = this.getConfig().getStringList("default.spout.cantCraft");
+    	permissions = (ArrayList<String>) this.getConfig().getStringList("default.cantPlace");
+    	cantPlace = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantPlace");
+    	cantBreak = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantBreak");
+    	cantCraft = (ArrayList<Integer>) this.getConfig().getIntegerList("default.spout.cantCraft");
     	this.getConfig().options().copyDefaults(true);
         saveConfig();
         logInfo("Loaded default permissions. Now loading techs.");
