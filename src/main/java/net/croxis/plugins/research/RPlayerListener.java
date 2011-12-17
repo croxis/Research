@@ -1,5 +1,6 @@
 package net.croxis.plugins.research;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerListener;
 
@@ -14,7 +15,8 @@ public class RPlayerListener extends PlayerListener{
 	@Override
     public void onPlayerJoin(PlayerJoinEvent event) {
 		if(event.getPlayer().hasPermission("research")){
-			Tech t = TechManager.getCurrentResearch(event.getPlayer());
+			Player player = event.getPlayer();
+			Tech t = TechManager.getCurrentResearch(player);
 			if(t == null){
 				t = new Tech();
 				t.name = "None";

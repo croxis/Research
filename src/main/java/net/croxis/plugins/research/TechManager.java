@@ -255,6 +255,7 @@ public class TechManager {
 	}
 	
 	public static Tech getCurrentResearch(Player player){
+		System.out.println("testestest");
 		SQLPlayer sqlplayer = getSQLPlayer(player);
 		return techs.get(sqlplayer.getCurrentResearch());
 	}
