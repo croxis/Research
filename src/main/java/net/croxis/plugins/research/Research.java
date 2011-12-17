@@ -54,7 +54,7 @@ public class Research extends JavaPlugin {
     	cantPlace = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantplace");
     	cantBreak = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantbreak");
     	cantCraft = (ArrayList<Integer>) this.getConfig().getIntegerList("default.spout.cantcraft");
-    	this.getConfig().options().copyDefaults(true);
+    	getConfig().options().copyDefaults(true);
         saveConfig();
         logInfo("Loaded default permissions. Now loading techs.");
         
@@ -65,8 +65,8 @@ public class Research extends JavaPlugin {
         
         
         // Load tech config
-        this.getTechConfig().options().copyDefaults(true);
-        this.saveTechConfig();
+        getTechConfig().options().copyDefaults(true);
+        saveTechConfig();
         
         Set<String> techNames = techConfig.getKeys(false);
         int i = 0;

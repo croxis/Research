@@ -126,10 +126,13 @@ public class TechManager {
 	public static void applyLearnedTech(Player player, Tech tech){
 		if(tech == null)
 			return;
+		plugin.logInfo("Applying tech: " + tech.name + " to player " + player.getName());
 		RPlayer rplayer = players.get(player);
+		plugin.logInfo("Previous cantPlace: " + rplayer.cantPlace.toString());
 		rplayer.cantPlace.removeAll(tech.canPlace);
-		rplayer.cantBreak.removeAll(tech.canPlace);
-		rplayer.cantCraft.removeAll(tech.canPlace);
+		plugin.logInfo("New cantPlace: " + rplayer.cantPlace.toString());
+		rplayer.cantBreak.removeAll(tech.canBreak);
+		rplayer.cantCraft.removeAll(tech.canCraft);
 		rplayer.permissions.addAll(tech.permissions);
 		//TODO: Process permission nodes
 		PermissionAttachment att = player.addAttachment(plugin);
