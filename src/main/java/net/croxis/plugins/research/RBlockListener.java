@@ -7,6 +7,8 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 public class RBlockListener extends BlockListener{
 	public void onBlockBreak(BlockBreakEvent event){
+		if (event.getPlayer().hasPermission("research.override"))
+			return;
 		if (event.getPlayer().hasPermission("research")){
 			Player player = event.getPlayer();
 			int id = event.getBlock().getTypeId();
@@ -16,7 +18,9 @@ public class RBlockListener extends BlockListener{
 	}
 	
 	public void onBlockPlace(BlockPlaceEvent event){
-		if(TechManager.players.get(event.getPlayer()).cantPlace.contains(event.getBlock().getTypeId()) && !event.getPlayer().hasPermission("research.override"))
+		if (event.getPlayer().hasPermission("research.override"))
+			return;
+		if(TechManager.players.get(event.getPlayer()).cantPlace.contains(event.getBlock().getTypeId()) && event.getPlayer().hasPermission("research"))
 			event.setCancelled(true);
 	}
 }

@@ -5,7 +5,9 @@ import org.getspout.spoutapi.event.inventory.InventoryListener;
 
 public class RInventoryListener extends InventoryListener{
 	public void onInventoryCraft(InventoryCraftEvent event){
-		if(TechManager.players.get(event.getPlayer()).cantCraft.contains(event.getResult().getTypeId()) && !event.getPlayer().hasPermission("research.override"))
+		if (event.getPlayer().hasPermission("research.override"))
+			return;
+		if(TechManager.players.get(event.getPlayer()).cantCraft.contains(event.getResult().getTypeId()) && event.getPlayer().hasPermission("research"))
 			event.setCancelled(true);
 	}
 

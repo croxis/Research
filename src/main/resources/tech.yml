@@ -4,7 +4,7 @@ Agriculture:
   # A short description to explain what this technology does, explains in game
   description: "Allows the planting of seeds"
   # Cost is a somewhat arbitrary number on the price of this tech
-  cost: 100
+  cost: 35
   # Prerequs are the techs needed to research this technology
   prereqs: []
   #- Tech Name 1
@@ -30,7 +30,7 @@ Agriculture:
 # Note that no specific field is required other than cost
 #
 Mining:
-  cost: 100
+  cost: 35
   canbreak: [1, 4, 13, 14, 15, 16, 21, 22, 24, 48, 49, 56, 73, 74, 87, 89, 97, 121]
 Stone Working:
   cost: 200
