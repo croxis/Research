@@ -23,7 +23,7 @@ Agriculture:
   # These features require spout
   spout:
     cancraft: []
-  Custom events not yet available. This is for situations like a tech giving a town 10 free bonus chunks or something that is plugin specific. 
+#  Custom events not yet available. This is for situations like a tech giving a town 10 free bonus chunks or something that is plugin specific. 
   customEvents: []
 #
 # An alternative format
