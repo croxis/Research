@@ -131,7 +131,10 @@ public class TechManager {
 		plugin.logInfo("Previous cantPlace: " + rplayer.cantPlace.toString());
 		rplayer.cantPlace.removeAll(tech.canPlace);
 		plugin.logInfo("New cantPlace: " + rplayer.cantPlace.toString());
+		plugin.logInfo("Previous cantBreak: " + rplayer.cantBreak.toString());
+		plugin.logInfo("Tech canBreak: " + tech.canBreak.toString());
 		rplayer.cantBreak.removeAll(tech.canBreak);
+		plugin.logInfo("New cantBreak: " + rplayer.cantBreak.toString());
 		rplayer.cantCraft.removeAll(tech.canCraft);
 		rplayer.permissions.addAll(tech.permissions);
 		//TODO: Process permission nodes
