@@ -32,10 +32,14 @@ public class TechManager {
 			return;
 		RPlayer rplayer = new RPlayer();
 		rplayer.name = player.getName();
-		rplayer.cantPlace.addAll(plugin.cantPlace);
-		rplayer.cantBreak.addAll(plugin.cantBreak);
-		rplayer.cantCraft.addAll(plugin.cantCraft);
-		rplayer.permissions.addAll(plugin.permissions);
+		for(int item : plugin.cantPlace)
+			rplayer.cantPlace.add(item);
+		for(int item : plugin.cantBreak)
+			rplayer.cantBreak.add(item);
+		for(int item : plugin.cantCraft)
+			rplayer.cantCraft.add(item);
+		for(String item : plugin.permissions)
+			rplayer.permissions.add(item);
 		players.put(player, rplayer);
 		SQLPlayer sqlplayer = getSQLPlayer(player);
 		for(String techName : sqlplayer.getResearched().split(",")){
