@@ -15,6 +15,7 @@ public class RPlayerListener extends PlayerListener{
 	@Override
     public void onPlayerJoin(PlayerJoinEvent event) {
 		if(event.getPlayer().hasPermission("research")){
+			TechManager.initPlayer(event.getPlayer());
 			Player player = event.getPlayer();
 			Tech t = TechManager.getCurrentResearch(player);
 			if(t == null){

@@ -7,10 +7,12 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 public class RBlockListener extends BlockListener{
 	public void onBlockBreak(BlockBreakEvent event){
-		Player player = event.getPlayer();
-		int id = event.getBlock().getTypeId();
-		if(TechManager.players.get(player).cantBreak.contains(id) && !event.getPlayer().hasPermission("research.override"))
-			event.setCancelled(true);
+		if (event.getPlayer().hasPermission("research")){
+			Player player = event.getPlayer();
+			int id = event.getBlock().getTypeId();
+			if(TechManager.players.get(player).cantBreak.contains(id))
+				event.setCancelled(true);
+		}
 	}
 	
 	public void onBlockPlace(BlockPlaceEvent event){
