@@ -21,7 +21,7 @@ public class RPlayerListener extends PlayerListener{
 				t = new Tech();
 				t.name = "None";
 			}
-			event.getPlayer().sendMessage("You currently know " + TechManager.getAvailableTech(event.getPlayer()).size() + "technologies" +
+			event.getPlayer().sendMessage("You currently know " + TechManager.getResearched(event.getPlayer()).size() + " technologies" +
         		" and are currently researching " + t.name + ".");
 		}
     }
