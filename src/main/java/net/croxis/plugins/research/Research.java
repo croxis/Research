@@ -56,15 +56,10 @@ public class Research extends JavaPlugin {
     	cantCraft = (ArrayList<Integer>) this.getConfig().getIntegerList("default.spout.cantCraft");
     	getConfig().options().copyDefaults(true);
         saveConfig();
-        logInfo("Loaded default permissions. Now loading techs.");
-        
-        // To make this work better I am creating a root node that all starting techs link to
-        //Tech t = new Tech();
-        //t.name = "root";
-        //TechManager.techs.put("root", t);
-        
+        logInfo("Loaded default permissions. Now loading techs.");        
         
         // Load tech config
+        
         getTechConfig().options().copyDefaults(true);
         saveTechConfig();
         
@@ -138,7 +133,10 @@ public class Research extends JavaPlugin {
     	return techManager;
     }
     
-    public void reloadCustomConfig() {
+    public void reloadTechConfig() {
+    	if (techConfigFile == null) {
+    	    techConfigFile = new File(getDataFolder(), "tech.yml");
+    	    }
         techConfig = YamlConfiguration.loadConfiguration(techConfigFile);
      
         // Look for defaults in the jar
@@ -151,7 +149,7 @@ public class Research extends JavaPlugin {
     
     public FileConfiguration getTechConfig() {
         if (techConfig == null) {
-            reloadCustomConfig();
+            reloadTechConfig();
         }
         return techConfig;
     }

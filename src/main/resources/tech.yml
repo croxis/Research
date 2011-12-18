@@ -32,9 +32,76 @@ Agriculture:
 Mining:
   cost: 35
   canBreak: [1, 4, 13, 14, 15, 16, 21, 22, 24, 48, 49, 56, 73, 74, 87, 89, 97, 121]
-Stone Working:
-  cost: 200
+Pottery:
+  cost:35
+  spout:
+    canCraft: [45, 108]
+Animal Husbandry:
+  cost:35
+Archery:
+  cost:35
+  spout:
+    canCraft: [261, 262]
+
+Masonry:
+  cost: 55
   prereqs: [Mining]
-  canPlace: [1, 4]
-  
+  canPlace: [87, 97]
+  spout:
+    canCraft: [1, 4, 24, 45, 48, 67, 87, 89, 97, 98, 108, 109, 112, 114]
+Trapping:
+  cost: 55
+  prereqs: [Animal Husbandry]
+Sailing:
+  cost: 55
+  prereqs: [Pottery]
+  spout:
+    canCraft: [333, 346]
+Calendar:
+  cost: 55
+  prereqs: [Pottery]
+  spout:
+    canCraft: [347]
+Writing:
+  cost: 55
+  prereqs: [Pottery]
+  spout:
+    canCraft: [339, 340, 358]
+The Wheel:
+  cost: 55
+  prereqs: [Animal Husbandry]
+Sand Working:
+  cost: 55
+  prereqs: [Mining]
+  canPlace: [20, 24]
+  spout:
+    canCraft: [20,24,102]
+
+Optics:
+  cost: 105
+  prereqs: [Sailing]
+Philosophy:
+  cost: 105
+  prereqs: [Writing]
+Pigback Riding:
+  cost: 105
+  prereqs: [The Wheel]
+  spout:
+    canCraft: [329]
+Mathematics:
+  cost: 105
+  prereqs: [The Wheel, Archery]
+Construction:
+  cost: 105
+  prereqs: [Masonry]
+  canPlace: [1, 42, 44, 45, 48, 49, 67, 89, 98, 101, 102, 108, 109, 112, 114, 121, 330]
+  spout:
+    canCraft: [44]
+Iron Working:
+  cost: 105
+  prereqs: [Bronze Working]
+  spout:
+    canCraft: [42, 267, 256, 257, 258, 259, 306, 307, 308, 309, 330]
+
+
   
