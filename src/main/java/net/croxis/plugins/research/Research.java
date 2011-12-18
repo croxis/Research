@@ -53,7 +53,7 @@ public class Research extends JavaPlugin {
     	permissions = (ArrayList<String>) this.getConfig().getStringList("default.permissions");
     	cantPlace = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantplace");
     	cantBreak = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantbreak");
-    	cantCraft = (ArrayList<Integer>) this.getConfig().getIntegerList("default.spout.cantcraft");
+    	cantCraft = (ArrayList<Integer>) this.getConfig().getIntegerList("default.spout.cantCraft");
     	getConfig().options().copyDefaults(true);
         saveConfig();
         logInfo("Loaded default permissions. Now loading techs.");

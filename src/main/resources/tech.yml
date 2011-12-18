@@ -14,15 +14,15 @@ Agriculture:
   - a.permission.node
   - another.one
   # These allow the place/break/use of items
-  canplace:
+  canPlace:
   - 295
   - 362
   - 372
   - 361
-  canbreak: []
+  canBreak: []
   # These features require spout
   spout:
-    cancraft: []
+    canCraft: []
 #  Custom events not yet available. This is for situations like a tech giving a town 10 free bonus chunks or something that is plugin specific. 
   customEvents: []
 #
@@ -31,10 +31,10 @@ Agriculture:
 #
 Mining:
   cost: 35
-  canbreak: [1, 4, 13, 14, 15, 16, 21, 22, 24, 48, 49, 56, 73, 74, 87, 89, 97, 121]
+  canBreak: [1, 4, 13, 14, 15, 16, 21, 22, 24, 48, 49, 56, 73, 74, 87, 89, 97, 121]
 Stone Working:
   cost: 200
   prereqs: [Mining]
-  canplace: [1, 4]
+  canPlace: [1, 4]
   
   
