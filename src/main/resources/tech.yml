@@ -33,13 +33,13 @@ Mining:
   cost: 35
   canBreak: [1, 4, 13, 14, 15, 16, 21, 22, 24, 48, 49, 56, 73, 74, 87, 89, 97, 121]
 Pottery:
-  cost:35
+  cost: 35
   spout:
     canCraft: [45, 108]
 Animal Husbandry:
-  cost:35
+  cost: 35
 Archery:
-  cost:35
+  cost: 35
   spout:
     canCraft: [261, 262]
 
