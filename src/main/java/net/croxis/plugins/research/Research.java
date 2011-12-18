@@ -51,8 +51,8 @@ public class Research extends JavaPlugin {
     	// Set up default systems
     	useSpout = this.getConfig().getBoolean("useSpout", false);
     	permissions = (ArrayList<String>) this.getConfig().getStringList("default.permissions");
-    	cantPlace = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantplace");
-    	cantBreak = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantbreak");
+    	cantPlace = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantPlace");
+    	cantBreak = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantBreak");
     	cantCraft = (ArrayList<Integer>) this.getConfig().getIntegerList("default.spout.cantCraft");
     	getConfig().options().copyDefaults(true);
         saveConfig();
@@ -75,6 +75,7 @@ public class Research extends JavaPlugin {
         	tech.name = techName;
         	if(!techConfig.contains(techName + ".cost"))
         		continue;
+        	this.logInfo("Loading " + tech.name + " with recorded cost " + Integer.toString(techConfig.getInt(techName + ".cost")));
         	tech.cost = techConfig.getInt(techName + ".cost");        	
         	if(techConfig.contains(techName + ".permissions"))
         		tech.permissions = techConfig.getStringList(techName + ".permissions");        	
