@@ -59,7 +59,7 @@ public class Research extends JavaPlugin {
         logInfo("Loaded default permissions. Now loading techs.");        
         
         // Load tech config
-        
+        this.reloadTechConfig();
         getTechConfig().options().copyDefaults(true);
         saveTechConfig();
         

@@ -99,7 +99,7 @@ Construction:
     canCraft: [44]
 Iron Working:
   cost: 105
-  prereqs: [Bronze Working]
+  prereqs: [Sand Working]
   spout:
     canCraft: [42, 267, 256, 257, 258, 259, 306, 307, 308, 309, 330]
 

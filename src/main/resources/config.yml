@@ -1,10 +1,6 @@
 # If false any techs with spout will be ignored
 useSpout: false
-# Basic research addon. Gives all players basic commands to learn techs and earn points every so many seconds.
-addon:
-  enabled: false
-  points: 1
-  seconds: 60
+
 # Default permissions and abilities for players with no technology researched.
 # The permissions list are what permissions players HAVE (can be ignored if you are using another permission manager)
 # The remaining settings are what players CANT do or use
