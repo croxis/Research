@@ -28,7 +28,8 @@ public class Research extends JavaPlugin {
 	public Logger logger;
 	
 	private FileConfiguration techConfig = null;
-	private File techConfigFile = new File(getDataFolder(), "tech.yml");
+	//private File techConfigFile = new File(getDataFolder(), "tech.yml");
+	private File techConfigFile = null;
 	private RBlockListener blockListener = new RBlockListener();
 	
     public void onDisable() {
