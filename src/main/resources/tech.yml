@@ -1,33 +1,30 @@
 # Technology tree
-# Name of the tech. Changing the name after researched can cause breakage
+#
+# Based on Civilization V Tech Tree
+################
+# Example tech #
+################
+# Agriculture: //Name of the tech: Changing the name after researched can cause breakage
+#  cost: 35 //Somewhat arbitrary number. Only required parameter
+#  description: "A short line explaining the tech."
+#  prereqs: [Wood working] //List of techs required to be learned before this one
+#  permissions: //List of permission nodes the player gains from this tech
+#  - a.permission.node
+#  - another.one
+#  canPlace: [295, 362, 372, 361] //What blocks or items can be placed  - 295
+#  canBreak: [] //What blocks can now be broken
+#  canCraft: [] //What can be crafted
+#  Custom events not yet available. This is for situations like a tech giving a town 10 free bonus chunks or something that is plugin specific. 
+#  customEvents: []
+
 Agriculture:
-  # A short description to explain what this technology does, explains in game
   description: "Allows the planting of seeds"
-  # Cost is a somewhat arbitrary number on the price of this tech
   cost: 35
-  # Prerequs are the techs needed to research this technology
-  prereqs: []
-  #- Tech Name 1
-  #- Second Tech Name
-  # Permission nodes gained when the players earns this tech
-  permissions:
-  - a.permission.node
-  - another.one
-  # These allow the place/break/use of items
   canPlace:
   - 295
   - 362
   - 372
   - 361
-  canBreak: []
-  # These features require spout
-  canCraft: []
-#  Custom events not yet available. This is for situations like a tech giving a town 10 free bonus chunks or something that is plugin specific. 
-  customEvents: []
-#
-# An alternative format
-# Note that no specific field is required other than cost
-#
 Mining:
   description: Allows the breaking of many hard blocks.
   cost: 35
