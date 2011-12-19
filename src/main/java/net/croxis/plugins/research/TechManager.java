@@ -135,10 +135,10 @@ public class TechManager {
 		plugin.logDebug("Tech canBreak: " + tech.canBreak.toString());
 		rplayer.cantBreak.removeAll(tech.canBreak);
 		plugin.logDebug("New cantBreak: " + rplayer.cantBreak.toString());
-		plugin.logDebug("Previous cantBreak: " + rplayer.cantBreak.toString());
-		plugin.logDebug("Tech canBreak: " + tech.canBreak.toString());
+		plugin.logDebug("Previous cantCraft: " + rplayer.cantCraft.toString());
+		plugin.logDebug("Tech canCraft: " + tech.canCraft.toString());
 		rplayer.cantCraft.removeAll(tech.canCraft);
-		plugin.logDebug("New cantBreak: " + rplayer.cantBreak.toString());
+		plugin.logDebug("New cantCraft: " + rplayer.cantCraft.toString());
 		rplayer.permissions.addAll(tech.permissions);
 		//TODO: Process permission nodes
 		PermissionAttachment att = player.addAttachment(plugin);
