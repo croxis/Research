@@ -20,7 +20,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Research extends JavaPlugin {
 	static TechManager techManager;
-	public boolean useSpout = false;
+	public boolean debug = false;
 	public ArrayList<String> permissions = new ArrayList<String>();
 	public ArrayList<Integer> cantPlace = new ArrayList<Integer>();
 	public ArrayList<Integer> cantBreak = new ArrayList<Integer>();
@@ -36,6 +36,11 @@ public class Research extends JavaPlugin {
         System.out.println(this + " is now disabled!");
     }
     
+    public void logDebug(String message){
+    	if(debug)
+    		logger.log(Level.INFO, "[Research - Debug] " + message);
+    }
+    
     public void logInfo(String message){
     	logger.log(Level.INFO, "[Research] " + message);
     }
@@ -49,11 +54,11 @@ public class Research extends JavaPlugin {
     	logger = Logger.getLogger(JavaPlugin.class.getName());
     	techManager = new TechManager(this);
     	// Set up default systems
-    	useSpout = this.getConfig().getBoolean("useSpout", false);
+    	debug = this.getConfig().getBoolean("debug", false);
     	permissions = (ArrayList<String>) this.getConfig().getStringList("default.permissions");
     	cantPlace = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantPlace");
     	cantBreak = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantBreak");
-    	cantCraft = (ArrayList<Integer>) this.getConfig().getIntegerList("default.spout.cantCraft");
+    	cantCraft = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantCraft");
     	getConfig().options().copyDefaults(true);
         saveConfig();
         logInfo("Loaded default permissions. Now loading techs.");        
@@ -70,7 +75,7 @@ public class Research extends JavaPlugin {
         	tech.name = techName;
         	if(!techConfig.contains(techName + ".cost"))
         		continue;
-        	this.logInfo("Loading " + tech.name + " with recorded cost " + Integer.toString(techConfig.getInt(techName + ".cost")));
+        	logInfo("Loading " + tech.name + " with recorded cost " + Integer.toString(techConfig.getInt(techName + ".cost")));
         	tech.cost = techConfig.getInt(techName + ".cost");        	
         	if(techConfig.contains(techName + ".permissions"))
         		tech.permissions = techConfig.getStringList(techName + ".permissions");        	
@@ -82,9 +87,8 @@ public class Research extends JavaPlugin {
         		tech.canPlace = techConfig.getIntegerList(techName + ".canPlace");        	
         	if(techConfig.contains(techName + ".canBreak"))
         		tech.canBreak = techConfig.getIntegerList(techName + ".canBreak");        	
-        	if(useSpout)
-        		if(techConfig.contains(techName + ".spout.canCraft"))
-            		tech.canCraft = techConfig.getIntegerList(techName + ".spout.canCraft");
+    		if(techConfig.contains(techName + ".canCraft"))
+        		tech.canCraft = techConfig.getIntegerList(techName + ".canCraft");
         	
         	techManager.techs.put(techName, tech);
         	i++;
@@ -113,18 +117,10 @@ public class Research extends JavaPlugin {
         
         // This should be it. Permission setups should happen onPlayerJoin
         
-        // Test for spout
-        Plugin test = getServer().getPluginManager().getPlugin("Spout");
-        if (test == null)
-        	this.useSpout = false;
-        
         this.getServer().getPluginManager().registerEvent(Type.PLAYER_JOIN, new RPlayerListener(this), Priority.Normal, this);
         this.getServer().getPluginManager().registerEvent(Type.BLOCK_BREAK, blockListener, Priority.Highest, this);
         this.getServer().getPluginManager().registerEvent(Type.BLOCK_PLACE, blockListener, Priority.Highest, this);
-        if(useSpout)
-        	this.getServer().getPluginManager().registerEvent(Type.CUSTOM_EVENT, new RInventoryListener(), Priority.Highest, this);
-        else
-        	this.logWarning("Spout is not in use. Please get spout for maximum enjoyment");
+        this.getServer().getPluginManager().registerEvent(Type.CUSTOM_EVENT, new RInventoryListener(), Priority.Highest, this);
         
         System.out.println(this + " is now enabled!");
     }
@@ -158,7 +154,7 @@ public class Research extends JavaPlugin {
         try {
             techConfig.save(techConfigFile);
         } catch (IOException ex) {
-            Logger.getLogger(JavaPlugin.class.getName()).log(Level.SEVERE, "Could not save config to " + techConfigFile, ex);
+            logger.log(Level.SEVERE, "Could not save config to " + techConfigFile, ex);
         }
     }
     

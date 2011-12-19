@@ -21,8 +21,7 @@ Agriculture:
   - 361
   canBreak: []
   # These features require spout
-  spout:
-    canCraft: []
+  canCraft: []
 #  Custom events not yet available. This is for situations like a tech giving a town 10 free bonus chunks or something that is plugin specific. 
   customEvents: []
 #
@@ -34,39 +33,33 @@ Mining:
   canBreak: [1, 4, 13, 14, 15, 16, 21, 22, 24, 48, 49, 56, 73, 74, 87, 89, 97, 121]
 Pottery:
   cost: 35
-  spout:
-    canCraft: [45, 108]
+  canCraft: [45, 108]
 Animal Husbandry:
   cost: 35
 Archery:
   cost: 35
-  spout:
-    canCraft: [261, 262]
+  canCraft: [261, 262]
 
 Masonry:
   cost: 55
   prereqs: [Mining]
   canPlace: [87, 97]
-  spout:
-    canCraft: [1, 4, 24, 45, 48, 67, 87, 89, 97, 98, 108, 109, 112, 114]
+  canCraft: [1, 4, 24, 45, 48, 67, 87, 89, 97, 98, 108, 109, 112, 114]
 Trapping:
   cost: 55
   prereqs: [Animal Husbandry]
 Sailing:
   cost: 55
   prereqs: [Pottery]
-  spout:
-    canCraft: [333, 346]
+  canCraft: [333, 346]
 Calendar:
   cost: 55
   prereqs: [Pottery]
-  spout:
-    canCraft: [347]
+  canCraft: [347]
 Writing:
   cost: 55
   prereqs: [Pottery]
-  spout:
-    canCraft: [339, 340, 358]
+  canCraft: [339, 340, 358]
 The Wheel:
   cost: 55
   prereqs: [Animal Husbandry]
@@ -74,8 +67,7 @@ Sand Working:
   cost: 55
   prereqs: [Mining]
   canPlace: [20, 24]
-  spout:
-    canCraft: [20,24,102]
+  canCraft: [20,24,102]
 
 Optics:
   cost: 105
@@ -86,8 +78,7 @@ Philosophy:
 Pigback Riding:
   cost: 105
   prereqs: [The Wheel]
-  spout:
-    canCraft: [329]
+  canCraft: [329]
 Mathematics:
   cost: 105
   prereqs: [The Wheel, Archery]
@@ -95,13 +86,11 @@ Construction:
   cost: 105
   prereqs: [Masonry]
   canPlace: [1, 42, 44, 45, 48, 49, 67, 89, 98, 101, 102, 108, 109, 112, 114, 121, 330]
-  spout:
-    canCraft: [44]
+  canCraft: [44]
 Iron Working:
   cost: 105
   prereqs: [Sand Working]
-  spout:
-    canCraft: [42, 267, 256, 257, 258, 259, 306, 307, 308, 309, 330]
+  canCraft: [42, 267, 256, 257, 258, 259, 306, 307, 308, 309, 330]
 
 
   

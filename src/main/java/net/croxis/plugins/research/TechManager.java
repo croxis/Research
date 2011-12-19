@@ -126,16 +126,19 @@ public class TechManager {
 	public static void applyLearnedTech(Player player, Tech tech){
 		if(tech == null)
 			return;
-		plugin.logInfo("Applying tech: " + tech.name + " to player " + player.getName());
+		plugin.logDebug("Applying tech: " + tech.name + " to player " + player.getName());
 		RPlayer rplayer = players.get(player);
-		plugin.logInfo("Previous cantPlace: " + rplayer.cantPlace.toString());
+		plugin.logDebug("Previous cantPlace: " + rplayer.cantPlace.toString());
 		rplayer.cantPlace.removeAll(tech.canPlace);
-		plugin.logInfo("New cantPlace: " + rplayer.cantPlace.toString());
-		plugin.logInfo("Previous cantBreak: " + rplayer.cantBreak.toString());
-		plugin.logInfo("Tech canBreak: " + tech.canBreak.toString());
+		plugin.logDebug("New cantPlace: " + rplayer.cantPlace.toString());
+		plugin.logDebug("Previous cantBreak: " + rplayer.cantBreak.toString());
+		plugin.logDebug("Tech canBreak: " + tech.canBreak.toString());
 		rplayer.cantBreak.removeAll(tech.canBreak);
-		plugin.logInfo("New cantBreak: " + rplayer.cantBreak.toString());
+		plugin.logDebug("New cantBreak: " + rplayer.cantBreak.toString());
+		plugin.logDebug("Previous cantBreak: " + rplayer.cantBreak.toString());
+		plugin.logDebug("Tech canBreak: " + tech.canBreak.toString());
 		rplayer.cantCraft.removeAll(tech.canCraft);
+		plugin.logDebug("New cantBreak: " + rplayer.cantBreak.toString());
 		rplayer.permissions.addAll(tech.permissions);
 		//TODO: Process permission nodes
 		PermissionAttachment att = player.addAttachment(plugin);
