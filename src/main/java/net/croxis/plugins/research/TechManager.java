@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
 
@@ -94,6 +95,32 @@ public class TechManager {
 		return false;
 	}
 	
+	public static boolean addPoints(String playerName, int points){
+		SQLPlayer sqlplayer = getSQLPlayer(playerName);
+		int currentPoints = sqlplayer.getCurrentPoints();
+		currentPoints += points;
+		String techName = sqlplayer.getCurrentResearch();
+		sqlplayer.setCurrentPoints(currentPoints);
+		plugin.getDatabase().save(sqlplayer);
+		Tech tech = techs.get(techName);
+		if(tech == null)
+			return false;
+		
+		if(currentPoints >= tech.cost){
+			applyLearnedTech(plugin.getServer().getPlayer(playerName), tech);
+			String researched = sqlplayer.getResearched();
+			if (researched.isEmpty())
+				sqlplayer.setResearched(tech.name);
+			else
+				sqlplayer.setResearched(researched + "," + tech.name);
+			sqlplayer.setCurrentPoints(currentPoints - tech.cost);
+			sqlplayer.setCurrentResearch(null);
+			plugin.getDatabase().save(sqlplayer);
+			return true;
+		}
+		return false;
+	}
+	
 	/**
 	 * Sets points to a player existing total. If enough pointed are earned the tech is learned.
 	 * Returns true if tech learned, return false if not. 
@@ -149,13 +176,26 @@ public class TechManager {
 	}
 	
 	/**
-	 * Manually adds and implaments a new tech.
+	 * Manually adds and implements a new tech.
 	 * @param player
 	 * @param tech
 	 */
 	public static void addTech(Player player, Tech tech){
 		applyLearnedTech(player, tech);
 		SQLPlayer sqlplayer = getSQLPlayer(player);
+		sqlplayer.setResearched(sqlplayer.getResearched() + "," + tech.name);
+		plugin.getDatabase().save(sqlplayer);
+	}
+	
+	/**
+	 * Manually adds and implements a new tech.
+	 * @param playerName
+	 * @param tech
+	 */
+	public static void addTech(String playerName, Tech tech){
+		OfflinePlayer player = plugin.getServer().getOfflinePlayer(playerName);
+		applyLearnedTech((Player) player, tech);
+		SQLPlayer sqlplayer = getSQLPlayer(playerName);
 		sqlplayer.setResearched(sqlplayer.getResearched() + "," + tech.name);
 		plugin.getDatabase().save(sqlplayer);
 	}
@@ -188,10 +228,14 @@ public class TechManager {
 	 * @return
 	 */
 	public static SQLPlayer getSQLPlayer(Player player){
-		SQLPlayer sqlplayer = plugin.getDatabase().find(SQLPlayer.class).where().ieq("player_name", player.getName()).findUnique();
+		return getSQLPlayer(player.getName());
+	}
+	
+	public static SQLPlayer getSQLPlayer(String playerName){
+		SQLPlayer sqlplayer = plugin.getDatabase().find(SQLPlayer.class).where().ieq("player_name", playerName).findUnique();
 		if (sqlplayer == null){
 			sqlplayer = new SQLPlayer();
-			sqlplayer.setPlayerName(player.getName());
+			sqlplayer.setPlayerName(playerName);
 			sqlplayer.setCurrentPoints(0);
 			sqlplayer.setResearched("");
 			plugin.getDatabase().save(sqlplayer);

@@ -83,6 +83,7 @@ Philosophy:
   cost: 105
   prereqs: [Writing]
 Pigback Riding:
+  description: Oink!
   cost: 105
   prereqs: [The Wheel]
   canCraft: [329]
@@ -92,10 +93,12 @@ Mathematics:
 Construction:
   cost: 105
   prereqs: [Masonry]
+  description: Allows construction of stone and brickwork blocks.
   canPlace: [1, 42, 44, 45, 48, 49, 67, 89, 98, 101, 102, 108, 109, 112, 114, 121, 330]
   canCraft: [44]
 Iron Working:
   cost: 105
+  description: The forging of iron items
   prereqs: [Sand Working]
   canCraft: [42, 267, 256, 257, 258, 259, 306, 307, 308, 309, 330]
 
@@ -118,4 +121,28 @@ Metal Casting:
   cost: 275
   prereqs: [Iron Working]
   canCraft: [42, 267, 256, 257, 258, 259, 306, 307, 308, 309, 330]
+
+Compass:
+  cost: 485
+  prereqs: [Optics]
+Education:
+  cost: 485
+  prereqs: [Theology, Civil Service]
+Chivalry:
+  cost: 485
+  prereqs: [Civil Service, Pigback Riding, Currency]
+Machinery:
+  cost: 485
+  description: How pistons work.
+  canCraft: [33,29]
+  prereqs: [Engineering]
+Physics:
+  cost: 485
+  prereqs: [Engineering, Metal Casting]
+Gold Working:
+  cost: 485
+  description: Knowledge of the forging of gold items.
+  prereqs: [Metal Casting]
+  canCraft: [74, 314, 315, 316, 317, 283, 284, 285, 286, 347, 266, 371]
+
   
