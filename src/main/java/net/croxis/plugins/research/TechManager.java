@@ -291,12 +291,18 @@ public class TechManager {
 		for(Tech t : unknowns){
 			boolean avail = true;
 			for(Tech parent : t.parents){
-				if(!researched.contains(parent));
-				avail = false;
+				if(!researched.contains(parent))
+					avail = false;
 			}
 			if(avail)
 				available.add(t);
 		}
+		
+		plugin.logDebug("AvailableTech for " + player.getName());
+		plugin.logDebug("unknown: " + unknowns.toString());
+		plugin.logDebug("available: " + available.toString());
+		plugin.logDebug("researched: " + researched.toString());
+		
 		return available;
 		
 	}
