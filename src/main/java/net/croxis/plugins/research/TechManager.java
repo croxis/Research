@@ -291,7 +291,7 @@ public class TechManager {
 		for(Tech t : unknowns){
 			boolean avail = true;
 			for(Tech parent : t.parents){
-				if(!available.contains(parent));
+				if(!researched.contains(parent));
 				avail = false;
 			}
 			if(avail)
