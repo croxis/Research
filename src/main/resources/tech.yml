@@ -11,24 +11,22 @@
 # permissions: //List of permission nodes the player gains from this tech
 # - a.permission.node
 # - another.one
-# canPlace: [295, 362, 372, 361] //What blocks or items can be placed - 295
+# canPlace: [6, 31, 32, 37] //What blocks or items can be placed - 295
 # canBreak: [] //What blocks can now be broken
 # canCraft: [] //What can be crafted
 # Custom events not yet available. This is for situations like a tech giving a town 10 free bonus chunks or something that is plugin specific.
 # customEvents: []
 
 Agriculture:
-  description: "Allows the planting of seeds"
+  description: "Allows the planting of seeds and plants"
   cost: 35
-  canPlace:
-  - 295
-  - 362
-  - 372
-  - 361
+  canPlace: [6, 31, 32, 37, 38, 39, 40, 59, 81, 83, 86, 103, 106, 115]
+  canCraft: [290, 295, 361, 362]
+  canUse: [290, 291, 292, 293, 294, 295, 351, 361, 362]
 Mining:
   description: Allows the breaking of many hard blocks.
   cost: 35
-  canBreak: [1, 4, 13, 14, 15, 16, 21, 22, 24, 48, 49, 56, 73, 74, 87, 89, 97, 121]
+  canBreak: [1, 14, 15, 16, 21, 24, 49, 56, 73, 74, 87, 89, 121]
 Pottery:
   cost: 35
   description: Allows the assembly of brick blocks
@@ -36,7 +34,8 @@ Pottery:
 Animal Husbandry:
   cost: 35
   description: Grants knowledge of leather making and shearing.
-  canCraft: [298,299,300,301,359]
+  canCraft: [298,299,300,301, 329, 359]
+  canUse: [296, 329]
 Archery:
   cost: 35
   description: Bows and Arrows dude!
@@ -46,8 +45,8 @@ Masonry:
   cost: 55
   description: Knowledge of crafting stone and brick works.
   prereqs: [Mining]
-  canPlace: []
-  canCraft: [24, 44, 45, 67, 98, 108, 109, 112, 113, 114]
+  canPlace: [1, 4, 14, 15, 24, 44, 45, 48, 67, 87, 98, 108, 109, 112, 113, 114, 121]
+  canCraft: [24, 44, 45, 67, 98, 108, 109, 112, 113, 114, 272, 273, 274, 275, 291]
 Trapping:
   cost: 55
   prereqs: [Animal Husbandry]
@@ -59,22 +58,24 @@ Sailing:
 Calendar:
   cost: 55
   description: Watches
-  prereqs: [Pottery]
+  prereqs: [Pottery, Agriculture]
   canCraft: [347]
 Writing:
   cost: 55
-  description: Maps, books, and bookshelves
+  description: Maps, books
   prereqs: [Pottery]
   canCraft: [339, 340, 358]
 The Wheel:
   cost: 55
+  description: Minecarts
+  canCraft: [328, 342]
   prereqs: [Animal Husbandry]
 Sand Working:
   cost: 55
   description: Glass placement, sandstone and glass pane making.
   prereqs: [Mining]
   canPlace: [20]
-  canCraft: [20,24,102]
+  canCraft: [24,102]
 
 Optics:
   cost: 105
@@ -94,68 +95,83 @@ Construction:
   cost: 105
   prereqs: [Masonry]
   description: Allows construction of stone and brickwork blocks.
-  canPlace: [1, 42, 44, 45, 48, 49, 67, 89, 98, 101, 102, 108, 109, 112, 114, 121, 330]
-  canCraft: [44]
+  canPlace: [20, 42, 44, 45, 48, 67, 89]
 Iron Working:
   cost: 105
-  description: The forging of iron items
+  description: The forging of iron weapons and items
   prereqs: [Sand Working]
-  canCraft: [42, 267, 256, 257, 258, 259, 306, 307, 308, 309, 330]
+  canCraft: [101, 267, 256, 257, 258, 259, 292, 325]
 
 Theology:
   cost: 275
+  description: Enchanting
   prereqs: [Calendar]
   canCraft: [116]
 Civil Service:
   cost: 275
+  canCraft: [380]
   prereqs: [Trapping, Philosophy]
 Currency:
   cost: 275
+  permissions: [iConomy.holdings, iConomy.help, iConomy.payment]
   prereqs: [Mathematics]
 Engineering:
   cost: 275
+  description: Advanced constructions such as obsidian and glass
   prereqs: [Mathematics, Construction]
-  canPlace: [1, 42, 44, 45, 48, 49, 67, 89, 98, 101, 102, 108, 109, 112, 114, 121, 331]
+  canPlace: [41, 42, 49, 57, 67, 71, 89, 101, 102]
   canCraft: [44]
 Metal Casting:
   cost: 275
+  description: Iron armor and doors
   prereqs: [Iron Working]
-  canCraft: [42, 267, 256, 257, 258, 259, 306, 307, 308, 309, 330]
+  canCraft: [42, 306, 307, 308, 309, 330]
 
 Compass:
   cost: 485
+  canCraft: [345]
   prereqs: [Optics]
 Education:
   cost: 485
+  description: Sharing knowledge through bookshelves
+  canCraft: [47]
   prereqs: [Theology, Civil Service]
 Chivalry:
   cost: 485
   prereqs: [Civil Service, Pigback Riding, Currency]
 Machinery:
   cost: 485
-  description: How pistons work.
-  canCraft: [33,29]
+  description: Pistons, buttons, levers, dispensers.
+  canPlace: [69, 77]
+  canCraft: [23, 33, 29, 69, 77]
   prereqs: [Engineering]
 Physics:
   cost: 485
+  description: Pressure plates
+  canPlace: [70, 72]
+  canCraft: [70, 72]
   prereqs: [Engineering, Metal Casting]
 Gold Working:
   cost: 485
   description: Knowledge of the forging of gold items.
   prereqs: [Metal Casting]
-  canCraft: [74, 314, 315, 316, 317, 283, 284, 285, 286, 347, 266, 371]
+  canCraft: [41, 74, 314, 315, 316, 317, 283, 284, 285, 286, 294, 347, 266, 371]
 
 Astronomy:
   cost: 780
   prereqs: [Compass, Education]
 Acoustics:
   cost: 780
+  description: Note block
+  canCraft: [25, 84]
   prereqs: [Education, Chivalry]
 Banking:
   cost: 780
   prereqs: [Chivalry]
 Printing Press:
   cost: 780
+  description: "Paintings
+  canCraft: [321]
   prereqs: [Machinery, Physics]
 Gunpowder:
   cost: 780
@@ -166,12 +182,16 @@ Navigation:
   prereqs: [Astronomy]
 Economics:
   cost: 1080
+  permissions: [iConomy.holdings.others]
   prereqs: [Banking, Printing Press]
 Chemistry:
   cost: 1080
+  description: Potions
+  canCraft: [46, 379]
   prereqs: [Gunpowder]
-Metallurgy:
+Diamond Working:
   cost: 1080
+  canCraft: [57, 276, 277, 278, 279, 293, 310, 311, 312, 313]
   prereqs: [Gunpowder]
 
 Archaeology:
@@ -188,7 +208,7 @@ Fertilizer:
   prereqs: [Chemistry]
 Rifling:
   cost: 1560
-  prereqs: [Metallurgy]
+  prereqs: [Diamond Working]
 
 Biology:
   cost: 2350
@@ -198,16 +218,22 @@ Steam Power:
   prereqs: [Scientific Theory, Military Science]
 Dynamite:
   cost: 2350
+  canPlace: [46]
   prereqs: [Military Science, Fertilizer, Rifling]
 
 Electricity:
   cost: 2660
+  description: Redstone power and Glowstone light
+  canPlace: [55, 76]
+  canCraft: [27, 28, 76, 59]
   prereqs: [Biology, Steam Power]
 Replaceable Parts:
   cost: 2660
   prereqs: [Steam Power]
 Railroad:
   cost: 2660
+  canPlace: [27, 28, 66]
+  canCraft: [66]
   prereqs: [Steam Power, Dynamite]
 
 Refrigeration:
@@ -224,6 +250,7 @@ Flight:
   prereqs: [Replaceable Parts]
 Combustion:
   cost: 3100
+  canCraft: [343]
   prereqs: [Replaceable Parts, Railroad]
 
 Penicillin:
@@ -234,6 +261,9 @@ Plastics:
   prereqs: [Refrigeration]
 Electronics:
   cost: 4700
+  description: Advanced redstone operations
+  canPlace: [93, 94]
+  canCraft: [356]
   prereqs: [Telegraph]
 Mass Media:
   cost: 4700
@@ -290,4 +320,5 @@ Nanotechnology:
 
 Future Tech:
   cost: 8000
+  canUse: [368]
   prereqs: [Globalization, Nanotechnology, Nuclear Fusion]

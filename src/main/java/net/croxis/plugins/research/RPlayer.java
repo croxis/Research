@@ -1,14 +1,15 @@
 package net.croxis.plugins.research;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 public class RPlayer {
 	public String name = "";
 	//public String cantplace = "";
 	//public String cantbuild = "";
 	//public String cantcraft = "";
-	public ArrayList<Integer> cantPlace = new ArrayList<Integer>();
-	public ArrayList<Integer> cantBreak = new ArrayList<Integer>();
-	public ArrayList<Integer> cantCraft = new ArrayList<Integer>();
-	public ArrayList<String> permissions = new ArrayList<String>();
+	public HashSet<Integer> cantPlace = new HashSet<Integer>();
+	public HashSet<Integer> cantBreak = new HashSet<Integer>();
+	public HashSet<Integer> cantCraft = new HashSet<Integer>();
+	public HashSet<Integer> cantUse = new HashSet<Integer>();
+	public HashSet<String> permissions = new HashSet<String>();
 }

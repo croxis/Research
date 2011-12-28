@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
@@ -21,10 +22,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Research extends JavaPlugin {
 	static TechManager techManager;
 	public boolean debug = false;
-	public ArrayList<String> permissions = new ArrayList<String>();
-	public ArrayList<Integer> cantPlace = new ArrayList<Integer>();
-	public ArrayList<Integer> cantBreak = new ArrayList<Integer>();
-	public ArrayList<Integer> cantCraft = new ArrayList<Integer>();
+	public HashSet<String> permissions = new HashSet<String>();
+	public HashSet<Integer> cantPlace = new HashSet<Integer>();
+	public HashSet<Integer> cantBreak = new HashSet<Integer>();
+	public HashSet<Integer> cantCraft = new HashSet<Integer>();
+	public HashSet<Integer> cantUse = new HashSet<Integer>();
 	public Logger logger;
 	
 	private FileConfiguration techConfig = null;
@@ -56,10 +58,11 @@ public class Research extends JavaPlugin {
     	techManager = new TechManager(this);
     	// Set up default systems
     	debug = this.getConfig().getBoolean("debug", false);
-    	permissions = (ArrayList<String>) this.getConfig().getStringList("default.permissions");
-    	cantPlace = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantPlace");
-    	cantBreak = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantBreak");
-    	cantCraft = (ArrayList<Integer>) this.getConfig().getIntegerList("default.cantCraft");
+    	permissions = (HashSet<String>) this.getConfig().getStringList("default.permissions");
+    	cantPlace = (HashSet<Integer>) this.getConfig().getIntegerList("default.cantPlace");
+    	cantBreak = (HashSet<Integer>) this.getConfig().getIntegerList("default.cantBreak");
+    	cantCraft = (HashSet<Integer>) this.getConfig().getIntegerList("default.cantCraft");
+    	cantUse = (HashSet<Integer>) this.getConfig().getIntegerList("default.cantUse");
     	getConfig().options().copyDefaults(true);
         saveConfig();
         logInfo("Loaded default permissions. Now loading techs.");        
@@ -79,17 +82,19 @@ public class Research extends JavaPlugin {
         	logInfo("Loading " + tech.name + " with recorded cost " + Integer.toString(techConfig.getInt(techName + ".cost")));
         	tech.cost = techConfig.getInt(techName + ".cost");        	
         	if(techConfig.contains(techName + ".permissions"))
-        		tech.permissions = techConfig.getStringList(techName + ".permissions");        	
+        		tech.permissions = (HashSet<String>) techConfig.getStringList(techName + ".permissions");        	
         	if(techConfig.contains(techName + ".description"))
         		tech.description = techConfig.getString(techName + ".description");
         	if(techConfig.contains(techName + ".prereqs"))
-        		tech.preReqs = techConfig.getStringList(techName + ".prereqs");        	
+        		tech.preReqs = (HashSet<String>) techConfig.getStringList(techName + ".prereqs");        	
         	if(techConfig.contains(techName + ".canPlace"))
-        		tech.canPlace = techConfig.getIntegerList(techName + ".canPlace");        	
+        		tech.canPlace = (HashSet<Integer>) techConfig.getIntegerList(techName + ".canPlace");        	
         	if(techConfig.contains(techName + ".canBreak"))
-        		tech.canBreak = techConfig.getIntegerList(techName + ".canBreak");        	
+        		tech.canBreak = (HashSet<Integer>) techConfig.getIntegerList(techName + ".canBreak");        	
     		if(techConfig.contains(techName + ".canCraft"))
-        		tech.canCraft = techConfig.getIntegerList(techName + ".canCraft");
+        		tech.canCraft = (HashSet<Integer>) techConfig.getIntegerList(techName + ".canCraft");
+    		if(techConfig.contains(techName + ".canUse"))
+        		tech.canCraft = (HashSet<Integer>) techConfig.getIntegerList(techName + ".canUse");
         	
         	techManager.techs.put(techName, tech);
         	i++;

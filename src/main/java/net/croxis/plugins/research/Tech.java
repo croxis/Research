@@ -1,18 +1,18 @@
 package net.croxis.plugins.research;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 public class Tech {
 	public String name = "";
 	public int cost = 0;
-	public ArrayList<Tech> parents = new ArrayList<Tech>();
-	public ArrayList<Tech> children = new ArrayList<Tech>();
-	public List<String> permissions = new ArrayList<String>();
-	public List<Integer> canPlace = new ArrayList<Integer>();
-	public List<Integer> canBreak = new ArrayList<Integer>();
-	public List<Integer> canCraft = new ArrayList<Integer>();
-	public List<String> preReqs = new ArrayList<String>();
+	public HashSet<Tech> parents = new HashSet<Tech>();
+	public HashSet<Tech> children = new HashSet<Tech>();
+	public HashSet<String> permissions = new HashSet<String>();
+	public HashSet<Integer> canPlace = new HashSet<Integer>();
+	public HashSet<Integer> canBreak = new HashSet<Integer>();
+	public HashSet<Integer> canCraft = new HashSet<Integer>();
+	public HashSet<Integer> canUse = new HashSet<Integer>();
+	public HashSet<String> preReqs = new HashSet<String>();
 	public String description = "";
 	
 	
