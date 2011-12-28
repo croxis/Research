@@ -58,11 +58,11 @@ public class Research extends JavaPlugin {
     	techManager = new TechManager(this);
     	// Set up default systems
     	debug = this.getConfig().getBoolean("debug", false);
-    	permissions = (HashSet<String>) this.getConfig().getStringList("default.permissions");
-    	cantPlace = (HashSet<Integer>) this.getConfig().getIntegerList("default.cantPlace");
-    	cantBreak = (HashSet<Integer>) this.getConfig().getIntegerList("default.cantBreak");
-    	cantCraft = (HashSet<Integer>) this.getConfig().getIntegerList("default.cantCraft");
-    	cantUse = (HashSet<Integer>) this.getConfig().getIntegerList("default.cantUse");
+    	permissions = new HashSet<String>(this.getConfig().getStringList("default.permissions"));
+    	cantPlace = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantPlace"));
+    	cantBreak = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantBreak"));
+    	cantCraft = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantCraft"));
+    	cantUse = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantUse"));
     	getConfig().options().copyDefaults(true);
         saveConfig();
         logInfo("Loaded default permissions. Now loading techs.");        
