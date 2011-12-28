@@ -44,10 +44,10 @@ Archery:
 
 Masonry:
   cost: 55
-  description: Knowledge of crafting stone and brick works.
+  description: Knowledge of crafting stone and brick tools and blocks.
   prereqs: [Mining]
   canPlace: []
-  canCraft: [24, 44, 45, 67, 98, 108, 109, 112, 113, 114]
+  canCraft: [24, 44, 45, 61, 67, 98, 108, 109, 112, 113, 114,272,273,274,275]
 Trapping:
   cost: 55
   prereqs: [Animal Husbandry]
