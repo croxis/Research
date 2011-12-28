@@ -5,17 +5,17 @@
 # Example tech #
 ################
 # Agriculture: //Name of the tech: Changing the name after researched can cause breakage
-#  cost: 35 //Somewhat arbitrary number. Only required parameter
-#  description: "A short line explaining the tech."
-#  prereqs: [Wood working] //List of techs required to be learned before this one
-#  permissions: //List of permission nodes the player gains from this tech
-#  - a.permission.node
-#  - another.one
-#  canPlace: [295, 362, 372, 361] //What blocks or items can be placed  - 295
-#  canBreak: [] //What blocks can now be broken
-#  canCraft: [] //What can be crafted
-#  Custom events not yet available. This is for situations like a tech giving a town 10 free bonus chunks or something that is plugin specific. 
-#  customEvents: []
+# cost: 35 //Somewhat arbitrary number. Only required parameter
+# description: "A short line explaining the tech."
+# prereqs: [Wood working] //List of techs required to be learned before this one
+# permissions: //List of permission nodes the player gains from this tech
+# - a.permission.node
+# - another.one
+# canPlace: [295, 362, 372, 361] //What blocks or items can be placed - 295
+# canBreak: [] //What blocks can now be broken
+# canCraft: [] //What can be crafted
+# Custom events not yet available. This is for situations like a tech giving a town 10 free bonus chunks or something that is plugin specific.
+# customEvents: []
 
 Agriculture:
   description: "Allows the planting of seeds"
@@ -44,10 +44,10 @@ Archery:
 
 Masonry:
   cost: 55
-  description: Knowledge of crafting stone and brick tools and blocks.
+  description: Knowledge of crafting stone and brick works.
   prereqs: [Mining]
   canPlace: []
-  canCraft: [24, 44, 45, 61, 67, 98, 108, 109, 112, 113, 114,272,273,274,275]
+  canCraft: [24, 44, 45, 67, 98, 108, 109, 112, 113, 114]
 Trapping:
   cost: 55
   prereqs: [Animal Husbandry]
@@ -71,7 +71,7 @@ The Wheel:
   prereqs: [Animal Husbandry]
 Sand Working:
   cost: 55
-  description: Glass placement, sandstone and glass pane making. 
+  description: Glass placement, sandstone and glass pane making.
   prereqs: [Mining]
   canPlace: [20]
   canCraft: [20,24,102]
@@ -145,4 +145,149 @@ Gold Working:
   prereqs: [Metal Casting]
   canCraft: [74, 314, 315, 316, 317, 283, 284, 285, 286, 347, 266, 371]
 
-  
+Astronomy:
+  cost: 780
+  prereqs: [Compass, Education]
+Acoustics:
+  cost: 780
+  prereqs: [Education, Chivalry]
+Banking:
+  cost: 780
+  prereqs: [Chivalry]
+Printing Press:
+  cost: 780
+  prereqs: [Machinery, Physics]
+Gunpowder:
+  cost: 780
+  prereqs: [Physics, Steel]
+
+Navigation:
+  cost: 1080
+  prereqs: [Astronomy]
+Economics:
+  cost: 1080
+  prereqs: [Banking, Printing Press]
+Chemistry:
+  cost: 1080
+  prereqs: [Gunpowder]
+Metallurgy:
+  cost: 1080
+  prereqs: [Gunpowder]
+
+Archaeology:
+  cost: 1560
+  prereqs: [Navigation]
+Scientific Theory:
+  cost: 1560
+  prereqs: [Navigation, Acoustics, Economics]
+Military Science:
+  cost: 1560
+  prereqs: [Economics, Chemistry]
+Fertilizer:
+  cost: 1560
+  prereqs: [Chemistry]
+Rifling:
+  cost: 1560
+  prereqs: [Metallurgy]
+
+Biology:
+  cost: 2350
+  prereqs: [Archaeology, Scientific Theory]
+Steam Power:
+  cost: 2350
+  prereqs: [Scientific Theory, Military Science]
+Dynamite:
+  cost: 2350
+  prereqs: [Military Science, Fertilizer, Rifling]
+
+Electricity:
+  cost: 2660
+  prereqs: [Biology, Steam Power]
+Replaceable Parts:
+  cost: 2660
+  prereqs: [Steam Power]
+Railroad:
+  cost: 2660
+  prereqs: [Steam Power, Dynamite]
+
+Refrigeration:
+  cost: 3100
+  prereqs: [Electricity]
+Telegraph:
+  cost: 3100
+  prereqs: [Electricity]
+Radio:
+  cost: 3100
+  prereqs: [Electricity]
+Flight:
+  cost: 3100
+  prereqs: [Replaceable Parts]
+Combustion:
+  cost: 3100
+  prereqs: [Replaceable Parts, Railroad]
+
+Penicillin:
+  cost: 4700
+  prereqs: [Refrigeration]
+Plastics:
+  cost: 4700
+  prereqs: [Refrigeration]
+Electronics:
+  cost: 4700
+  prereqs: [Telegraph]
+Mass Media:
+  cost: 4700
+  prereqs: [Radio]
+Radar:
+  cost: 4700
+  prereqs: [Radio, Flight, Combustion]
+Atomic Theory:
+  cost: 4700
+  prereqs: [Combustion]
+
+Ecology:
+  cost: 5400
+  prereqs: [Penicillin, Plastics]
+Computers:
+  cost: 5400
+  prereqs: [Electronics, Mass Media, Radar]
+Rocketry:
+  cost: 5400
+  prereqs: [Radar]
+Lasers:
+  cost: 5400
+  prereqs: [Radar]
+Nuclear Fission:
+  cost: 5400
+  prereqs: [Atomic Theory]
+
+Globalization:
+  cost: 6000
+  prereqs: [Ecology, Computers]
+Robotics:
+  cost: 6000
+  prereqs: [Computers]
+Satellites:
+  cost: 6000
+  prereqs: [Rocketry]
+Stealth:
+  cost: 6000
+  prereqs: [Lasers]
+Advanced Ballistics:
+  cost: 6000
+  prereqs: [Lasers, Nuclear Fission]
+
+Particle Physics:
+  cost: 6500
+  prereqs: [Robotics, Satellites]
+Nuclear Fusion:
+  cost: 6500
+  prereqs: [Satellites, Stealth, Advanced Ballistics]
+
+Nanotechnology:
+  cost: 7000
+  prereqs: [Partical Physics]
+
+Future Tech:
+  cost: 8000
+  prereqs: [Globalization, Nanotechnology, Nuclear Fusion]
