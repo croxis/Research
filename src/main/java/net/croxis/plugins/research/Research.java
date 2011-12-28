@@ -82,19 +82,19 @@ public class Research extends JavaPlugin {
         	logInfo("Loading " + tech.name + " with recorded cost " + Integer.toString(techConfig.getInt(techName + ".cost")));
         	tech.cost = techConfig.getInt(techName + ".cost");        	
         	if(techConfig.contains(techName + ".permissions"))
-        		tech.permissions = (HashSet<String>) techConfig.getStringList(techName + ".permissions");        	
+        		tech.permissions = new HashSet<String>( techConfig.getStringList(techName + ".permissions"));        	
         	if(techConfig.contains(techName + ".description"))
         		tech.description = techConfig.getString(techName + ".description");
         	if(techConfig.contains(techName + ".prereqs"))
-        		tech.preReqs = (HashSet<String>) techConfig.getStringList(techName + ".prereqs");        	
+        		tech.preReqs = new HashSet<String>( techConfig.getStringList(techName + ".prereqs"));        	
         	if(techConfig.contains(techName + ".canPlace"))
-        		tech.canPlace = (HashSet<Integer>) techConfig.getIntegerList(techName + ".canPlace");        	
+        		tech.canPlace = new HashSet<Integer>( techConfig.getIntegerList(techName + ".canPlace"));        	
         	if(techConfig.contains(techName + ".canBreak"))
-        		tech.canBreak = (HashSet<Integer>) techConfig.getIntegerList(techName + ".canBreak");        	
+        		tech.canBreak = new HashSet<Integer>( techConfig.getIntegerList(techName + ".canBreak"));        	
     		if(techConfig.contains(techName + ".canCraft"))
-        		tech.canCraft = (HashSet<Integer>) techConfig.getIntegerList(techName + ".canCraft");
+        		tech.canCraft = new HashSet<Integer>( techConfig.getIntegerList(techName + ".canCraft"));
     		if(techConfig.contains(techName + ".canUse"))
-        		tech.canCraft = (HashSet<Integer>) techConfig.getIntegerList(techName + ".canUse");
+        		tech.canCraft = new HashSet<Integer>( techConfig.getIntegerList(techName + ".canUse"));
         	
         	techManager.techs.put(techName, tech);
         	i++;
