@@ -174,8 +174,8 @@ Printing Press:
   canCraft: [321]
   prereqs: [Machinery, Physics]
 Gunpowder:
-  cost: 780
-  prereqs: [Physics, Steel]
+  cost: 780  
+  prereqs: [Physics]
 
 Navigation:
   cost: 1080
@@ -192,7 +192,7 @@ Chemistry:
 Diamond Working:
   cost: 1080
   canCraft: [57, 276, 277, 278, 279, 293, 310, 311, 312, 313]
-  prereqs: [Gunpowder]
+  prereqs: [Gunpowder, Gold Working]
 
 Archaeology:
   cost: 1560
@@ -316,7 +316,7 @@ Nuclear Fusion:
 
 Nanotechnology:
   cost: 7000
-  prereqs: [Partical Physics]
+  prereqs: [Particle Physics]
 
 Future Tech:
   cost: 8000
