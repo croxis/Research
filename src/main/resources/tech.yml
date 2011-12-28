@@ -170,7 +170,7 @@ Banking:
   prereqs: [Chivalry]
 Printing Press:
   cost: 780
-  description: "Paintings
+  description: Paintings
   canCraft: [321]
   prereqs: [Machinery, Physics]
 Gunpowder:
