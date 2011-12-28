@@ -1,17 +1,12 @@
 package net.croxis.plugins.research;
 
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerListener;
 
 public class RPlayerListener extends PlayerListener{
-	private Research plugin;
-	
-	public RPlayerListener(Research plugin) {
-		super();
-		this.plugin = plugin;
-	}
-
 	@Override
     public void onPlayerJoin(PlayerJoinEvent event) {
 		if(event.getPlayer().hasPermission("research")){
@@ -26,4 +21,15 @@ public class RPlayerListener extends PlayerListener{
         		" and are currently researching " + t.name + ".");
 		}
     }
+	
+	@Override
+	public void onPlayerInteract(PlayerInteractEvent event){
+		if (event.getPlayer().getGameMode().equals(GameMode.CREATIVE))
+			return;
+		if(event.getPlayer().hasPermission("research") && event.hasItem()){
+			if(TechManager.players.get(event.getPlayer()).cantUse.contains(event.getItem().getTypeId()))
+				event.setCancelled(true);
+			
+		}
+	}
 }
