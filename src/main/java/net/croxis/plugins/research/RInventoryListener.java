@@ -2,6 +2,7 @@ package net.croxis.plugins.research;
 
 import org.getspout.spoutapi.event.inventory.InventoryCraftEvent;
 import org.getspout.spoutapi.event.inventory.InventoryListener;
+import java.util.HashSet;
 
 public class RInventoryListener extends InventoryListener{
 	public void onInventoryCraft(InventoryCraftEvent event){
