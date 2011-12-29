@@ -57,6 +57,8 @@ public class TechManager {
 		for(String techName : sqlplayer.getResearched().split(",")){
 			applyLearnedTech(player, techs.get(techName));
 		}
+		plugin.logDebug("Init player " + rplayer.name);
+		plugin.logDebug("Can't Place: " + rplayer.cantPlace.toString());
 	}
 	
 	public static void unloadPlayer(Player player){
