@@ -21,11 +21,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Research extends JavaPlugin {
 	static TechManager techManager;
 	public boolean debug = false;
-	public HashSet<String> permissions = new HashSet<String>();
-	public HashSet<Integer> cantPlace = new HashSet<Integer>();
-	public HashSet<Integer> cantBreak = new HashSet<Integer>();
-	public HashSet<Integer> cantCraft = new HashSet<Integer>();
-	public HashSet<Integer> cantUse = new HashSet<Integer>();
+	
 	public Logger logger;
 	
 	private FileConfiguration techConfig = null;
@@ -52,17 +48,16 @@ public class Research extends JavaPlugin {
     	logger.log(Level.WARNING, "[Research] " + message);
     }
 
-    @SuppressWarnings("unchecked")
 	public void onEnable() {
     	logger = Logger.getLogger(JavaPlugin.class.getName());
     	techManager = new TechManager(this);
     	// Set up default systems
     	debug = this.getConfig().getBoolean("debug", false);
-    	permissions = new HashSet<String>(this.getConfig().getStringList("default.permissions"));
-    	cantPlace = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantPlace"));
-    	cantBreak = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantBreak"));
-    	cantCraft = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantCraft"));
-    	cantUse = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantUse"));
+    	techManager.permissions = new HashSet<String>(this.getConfig().getStringList("default.permissions"));
+    	techManager.cantPlace = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantPlace"));
+    	techManager.cantBreak = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantBreak"));
+    	techManager.cantCraft = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantCraft"));
+    	techManager.cantUse = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantUse"));
     	getConfig().options().copyDefaults(true);
         saveConfig();
         logInfo("Loaded default permissions. Now loading techs.");        

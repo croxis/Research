@@ -3,6 +3,7 @@ package net.croxis.plugins.research;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -17,6 +18,11 @@ import org.bukkit.permissions.PermissionAttachment;
 public class TechManager {
 	public static HashMap <String, Tech> techs = new HashMap<String, Tech>();
 	public static HashMap <Player, RPlayer> players = new HashMap<Player, RPlayer>();
+	public static HashSet<String> permissions;
+	public static HashSet<Integer> cantPlace;
+	public static HashSet<Integer> cantBreak;
+	public static HashSet<Integer> cantCraft;
+	public static HashSet<Integer> cantUse;
 	private static Research plugin;
 	
 	public TechManager(Research plugin){
@@ -33,14 +39,19 @@ public class TechManager {
 			return;
 		RPlayer rplayer = new RPlayer();
 		rplayer.name = player.getName();
-		for(int item : plugin.cantPlace)
+		rplayer.cantPlace.addAll(cantPlace);
+		rplayer.cantBreak.addAll(cantBreak);
+		rplayer.cantCraft.addAll(cantCraft);
+		rplayer.cantUse.addAll(cantUse);
+		rplayer.permissions.addAll(permissions);
+		/*for(int item : plugin.cantPlace)
 			rplayer.cantPlace.add(item);
 		for(int item : plugin.cantBreak)
 			rplayer.cantBreak.add(item);
 		for(int item : plugin.cantCraft)
 			rplayer.cantCraft.add(item);
 		for(String item : plugin.permissions)
-			rplayer.permissions.add(item);
+			rplayer.permissions.add(item);*/
 		players.put(player, rplayer);
 		SQLPlayer sqlplayer = getSQLPlayer(player);
 		for(String techName : sqlplayer.getResearched().split(",")){
