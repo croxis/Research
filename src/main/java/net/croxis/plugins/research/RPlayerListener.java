@@ -6,6 +6,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerListener;
 
+import java.util.HashSet;
+
 public class RPlayerListener extends PlayerListener{
 	@Override
     public void onPlayerJoin(PlayerJoinEvent event) {
