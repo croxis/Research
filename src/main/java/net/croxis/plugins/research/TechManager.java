@@ -1,6 +1,5 @@
 package net.croxis.plugins.research;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -292,10 +291,10 @@ public class TechManager {
 	 * @param player
 	 * @return
 	 */
-	public static ArrayList<Tech> getAvailableTech(Player player){
-		ArrayList<Tech> unknowns = new ArrayList<Tech>();
-		ArrayList<Tech> available = new ArrayList<Tech>();
-		ArrayList<Tech> researched = getResearched(player);
+	public static HashSet<Tech> getAvailableTech(Player player){
+		HashSet<Tech> unknowns = new HashSet<Tech>();
+		HashSet<Tech> available = new HashSet<Tech>();
+		HashSet<Tech> researched = getResearched(player);
 		for(Tech t : techs.values()){
 			if(!researched.contains(t))
 				unknowns.add(t);
@@ -325,10 +324,10 @@ public class TechManager {
 	 * @param player
 	 * @return
 	 */
-	public static ArrayList<Tech> getResearched(Player player){
+	public static HashSet<Tech> getResearched(Player player){
 		SQLPlayer sqlplayer = getSQLPlayer(player);
 		String learned = sqlplayer.getResearched();
-		ArrayList<Tech> ts = new ArrayList<Tech>();
+		HashSet<Tech> ts = new HashSet<Tech>();
 		if(learned.equalsIgnoreCase(""))
 			return ts;
 		
