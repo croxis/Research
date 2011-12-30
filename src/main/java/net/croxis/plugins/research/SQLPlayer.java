@@ -1,6 +1,7 @@
 package net.croxis.plugins.research;
 
 import javax.persistence.Entity;
+import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -18,6 +19,7 @@ public class SQLPlayer {
 	private int currentPoints;
 	private String currentResearch;
 	@NotNull
+	@Column(length=2048)
 	private String researched;
 	public int getId() {
 		return id;
