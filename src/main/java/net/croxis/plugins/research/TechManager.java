@@ -178,6 +178,7 @@ public class TechManager {
 		plugin.logDebug("Tech canCraft: " + tech.canCraft.toString());
 		rplayer.cantCraft.removeAll(tech.canCraft);
 		plugin.logDebug("New cantCraft: " + rplayer.cantCraft.toString());
+		rplayer.cantUse.removeAll(tech.canUse);
 		rplayer.permissions.addAll(tech.permissions);
 		//TODO: Process permission nodes
 		PermissionAttachment att = player.addAttachment(plugin);

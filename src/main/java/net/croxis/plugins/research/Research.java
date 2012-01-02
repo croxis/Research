@@ -12,8 +12,11 @@ import java.util.logging.Logger;
 
 import javax.persistence.PersistenceException;
 
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -173,5 +176,17 @@ public class Research extends JavaPlugin {
         List<Class<?>> list = new ArrayList<Class<?>>();
         list.add(SQLPlayer.class);
         return list;
+    }
+    
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
+    	if(args[0].equalsIgnoreCase("player") && args.length == 2){
+    		RPlayer rplayer = TechManager.players.get(getServer().getPlayer(args[1]));
+    		sender.sendMessage("[Research] Debug info for " + args[1]);
+    		sender.sendMessage("CantPlace: " + rplayer.cantPlace.toString());
+    		sender.sendMessage("CantBreak: " + rplayer.cantBreak.toString());
+    		sender.sendMessage("CantCraft: " + rplayer.cantCraft.toString());
+    		sender.sendMessage("CantUse: " + rplayer.cantUse.toString());
+    	}
+    	return true;
     }
 }
