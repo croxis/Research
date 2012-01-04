@@ -179,7 +179,9 @@ public class Research extends JavaPlugin {
     }
     
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
+    	System.out.println("command lalala");
     	if(args[0].equalsIgnoreCase("player") && args.length == 2){
+    		System.out.println(args.toString());
     		RPlayer rplayer = TechManager.players.get(getServer().getPlayer(args[1]));
     		sender.sendMessage("[Research] Debug info for " + args[1]);
     		sender.sendMessage("CantPlace: " + rplayer.cantPlace.toString());

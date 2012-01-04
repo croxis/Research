@@ -10,5 +10,6 @@ version: '1'
 commands:
   research:
     description: technology tree
-    permissions: research.debug
+    permission: research.debug
+    useage: /<command> [player]
 depend: ["Spout"]
