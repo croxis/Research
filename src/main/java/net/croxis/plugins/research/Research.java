@@ -77,7 +77,7 @@ public class Research extends JavaPlugin {
         	tech.name = techName;
         	if(!techConfig.contains(techName + ".cost"))
         		continue;
-        	logInfo("Loading " + tech.name + " with recorded cost " + Integer.toString(techConfig.getInt(techName + ".cost")));
+        	logDebug("Loading " + tech.name + " with recorded cost " + Integer.toString(techConfig.getInt(techName + ".cost")));
         	tech.cost = techConfig.getInt(techName + ".cost");        	
         	if(techConfig.contains(techName + ".permissions"))
         		tech.permissions = new HashSet<String>( techConfig.getStringList(techName + ".permissions"));        	
@@ -92,7 +92,7 @@ public class Research extends JavaPlugin {
     		if(techConfig.contains(techName + ".canCraft"))
         		tech.canCraft = new HashSet<Integer>( techConfig.getIntegerList(techName + ".canCraft"));
     		if(techConfig.contains(techName + ".canUse"))
-        		tech.canCraft = new HashSet<Integer>( techConfig.getIntegerList(techName + ".canUse"));
+        		tech.canUse = new HashSet<Integer>( techConfig.getIntegerList(techName + ".canUse"));
         	
         	techManager.techs.put(techName, tech);
         	i++;
@@ -179,9 +179,9 @@ public class Research extends JavaPlugin {
     }
     
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
-    	System.out.println("command lalala");
+    	if(args.length == 0)
+    		return false;
     	if(args[0].equalsIgnoreCase("player") && args.length == 2){
-    		System.out.println(args.toString());
     		RPlayer rplayer = TechManager.players.get(getServer().getPlayer(args[1]));
     		sender.sendMessage("[Research] Debug info for " + args[1]);
     		sender.sendMessage("CantPlace: " + rplayer.cantPlace.toString());
