@@ -236,14 +236,14 @@ public class TechManager {
 		return sqlplayer;
 	}
 	
-	public static boolean startResearch(Player player, String techName){
+	public static boolean startResearch(String playerName, String techName){
 		if(!techs.containsKey(techName))
 			return false;
-		return startResearch(player, techs.get(techName));
+		return startResearch(playerName, techs.get(techName));
 	}
-
-	public static boolean startResearch(Player player, Tech tech) {
-		SQLPlayer sqlplayer = getSQLPlayer(player);
+	
+	public static boolean startResearch(String playerName, Tech tech){
+		SQLPlayer sqlplayer = getSQLPlayer(playerName);
 		String learned = sqlplayer.getResearched();
 		String[] ll = learned.split(",");
 		List<String> learnedList = Arrays.asList(ll);
@@ -261,6 +261,16 @@ public class TechManager {
 		//TODO: Check if enough points to complete tech.
 		
 		return true;
+	}
+	
+	public static boolean startResearch(Player player, String techName){
+		if(!techs.containsKey(techName))
+			return false;
+		return startResearch(player, techs.get(techName));
+	}
+
+	public static boolean startResearch(Player player, Tech tech) {
+		return startResearch(player.getName(), tech);
 	}
 	
 	public static boolean canResearch(Player player, Tech tech){
