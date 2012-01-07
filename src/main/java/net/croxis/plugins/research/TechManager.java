@@ -303,9 +303,18 @@ public class TechManager {
 	 * @return
 	 */
 	public static HashSet<Tech> getAvailableTech(Player player){
+		return getAvailableTech(player.getName());
+	}
+	
+	/**
+	 * Returns a list of Techs that a player can research next
+	 * @param playerName
+	 * @return
+	 */
+	public static HashSet<Tech> getAvailableTech(String playerName){
 		HashSet<Tech> unknowns = new HashSet<Tech>();
 		HashSet<Tech> available = new HashSet<Tech>();
-		HashSet<Tech> researched = getResearched(player);
+		HashSet<Tech> researched = getResearched(playerName);
 		for(Tech t : techs.values()){
 			if(!researched.contains(t))
 				unknowns.add(t);
@@ -321,7 +330,7 @@ public class TechManager {
 				available.add(t);
 		}
 		
-		plugin.logDebug("AvailableTech for " + player.getName());
+		plugin.logDebug("AvailableTech for " + playerName);
 		plugin.logDebug("unknown: " + unknowns.toString());
 		plugin.logDebug("available: " + available.toString());
 		plugin.logDebug("researched: " + researched.toString());
