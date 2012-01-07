@@ -76,38 +76,16 @@ public class TechManager {
 	
 	/**
 	 * Adds points to a player existing total. If enough pointed are earned the tech is learned.
-	 * Returns true if tech learned, return false if not. 
+	 * Returns Tech if learned, return null if not. 
 	 * @param player
 	 * @param points
 	 * @return
 	 */
-	public static boolean addPoints(Player player, int points){
-		SQLPlayer sqlplayer = getSQLPlayer(player);
-		int currentPoints = sqlplayer.getCurrentPoints();
-		currentPoints += points;
-		String techName = sqlplayer.getCurrentResearch();
-		sqlplayer.setCurrentPoints(currentPoints);
-		plugin.getDatabase().save(sqlplayer);
-		Tech tech = techs.get(techName);
-		if(tech == null)
-			return false;
-		
-		if(currentPoints >= tech.cost){
-			applyLearnedTech(player, tech);
-			String researched = sqlplayer.getResearched();
-			if (researched.isEmpty())
-				sqlplayer.setResearched(tech.name);
-			else
-				sqlplayer.setResearched(researched + "," + tech.name);
-			sqlplayer.setCurrentPoints(currentPoints - tech.cost);
-			sqlplayer.setCurrentResearch(null);
-			plugin.getDatabase().save(sqlplayer);
-			return true;
-		}
-		return false;
+	public static Tech addPoints(Player player, int points){
+		return addPoints(player.getName(), points);
 	}
 	
-	public static boolean addPoints(String playerName, int points){
+	public static Tech addPoints(String playerName, int points){
 		SQLPlayer sqlplayer = getSQLPlayer(playerName);
 		int currentPoints = sqlplayer.getCurrentPoints();
 		currentPoints += points;
@@ -116,7 +94,7 @@ public class TechManager {
 		plugin.getDatabase().save(sqlplayer);
 		Tech tech = techs.get(techName);
 		if(tech == null)
-			return false;
+			return null;
 		
 		if(currentPoints >= tech.cost){
 			applyLearnedTech(plugin.getServer().getPlayer(playerName), tech);
@@ -128,9 +106,9 @@ public class TechManager {
 			sqlplayer.setCurrentPoints(currentPoints - tech.cost);
 			sqlplayer.setCurrentResearch(null);
 			plugin.getDatabase().save(sqlplayer);
-			return true;
+			return tech;
 		}
-		return false;
+		return null;
 	}
 	
 	/**

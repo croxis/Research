@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.croxis.plugins.research</groupId>
     <artifactId>Research</artifactId>
-    <version>1</version>
+    <version>2</version>
     <name>Research</name>
     <repositories>
         <repository>
