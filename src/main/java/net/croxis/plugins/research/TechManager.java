@@ -316,7 +316,16 @@ public class TechManager {
 	 * @return
 	 */
 	public static HashSet<Tech> getResearched(Player player){
-		SQLPlayer sqlplayer = getSQLPlayer(player);
+		return getResearched(player.getName());
+	}
+	
+	/**
+	 * Returns a list of technologies the player has learned
+	 * @param playerName
+	 * @return
+	 */
+	public static HashSet<Tech> getResearched(String playerName){
+		SQLPlayer sqlplayer = getSQLPlayer(playerName);
 		String learned = sqlplayer.getResearched();
 		HashSet<Tech> ts = new HashSet<Tech>();
 		if(learned.equalsIgnoreCase(""))
@@ -328,6 +337,8 @@ public class TechManager {
 		}
 		return ts;
 	}
+	
+	
 	
 	public static int getPoints(Player player){
 		SQLPlayer sqlplayer = getSQLPlayer(player);
