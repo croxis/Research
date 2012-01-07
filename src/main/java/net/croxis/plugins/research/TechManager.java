@@ -338,5 +338,10 @@ public class TechManager {
 		SQLPlayer sqlplayer = getSQLPlayer(player);
 		return techs.get(sqlplayer.getCurrentResearch());
 	}
+	
+	public static Tech getCurrentResearch(String playerName){
+		SQLPlayer sqlplayer = getSQLPlayer(playerName);
+		return techs.get(sqlplayer.getCurrentResearch());
+	}
 
 }
