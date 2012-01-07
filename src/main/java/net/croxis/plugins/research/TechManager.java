@@ -213,6 +213,26 @@ public class TechManager {
 		initPlayer(player);
 	}
 	
+	/**
+	 * Replaces existing player tech knowledge. If only adding tech please use addTech() instead.
+	 * @param player
+	 * @param techs
+	 */
+	public static void setTech(Player player, HashSet<Tech> techs){
+		SQLPlayer sqlplayer = getSQLPlayer(player);
+		String techNames = "";
+		Iterator<Tech> techi = techs.iterator();
+		while(techi.hasNext()){
+			techNames += techi.next().name;
+			if(techi.hasNext())
+				techNames += ",";
+		}
+		sqlplayer.setResearched(techNames);
+		plugin.getDatabase().save(sqlplayer);
+		unloadPlayer(player);
+		initPlayer(player);
+	}
+	
 	
 	/**
 	 * Returns persistance of a player.
