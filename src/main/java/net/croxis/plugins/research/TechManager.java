@@ -334,6 +334,11 @@ public class TechManager {
 		return sqlplayer.getCurrentPoints();
 	}
 	
+	public static int getPoints(String playerName){
+		SQLPlayer sqlplayer = getSQLPlayer(playerName);
+		return sqlplayer.getCurrentPoints();
+	}
+	
 	public static Tech getCurrentResearch(Player player){
 		SQLPlayer sqlplayer = getSQLPlayer(player);
 		return techs.get(sqlplayer.getCurrentResearch());
