@@ -143,6 +143,8 @@ public class TechManager {
 	public static void applyLearnedTech(Player player, Tech tech){
 		if(tech == null)
 			return;
+		if(!players.containsKey(player))
+			return;
 		plugin.logDebug("Applying tech: " + tech.name + " to player " + player.getName());
 		RPlayer rplayer = players.get(player);
 		plugin.logDebug("Previous cantPlace: " + rplayer.cantPlace.toString());
