@@ -194,6 +194,17 @@ public class TechManager {
 	}
 	
 	/**
+	 * Add and implements a set of techs
+	 * @param playerName
+	 * @param techs
+	 */
+	public static void addTechs(String playerName, HashSet<Tech> techs){
+		for(Tech t : techs){
+			addTech(playerName, t);
+		}
+	}
+	
+	/**
 	 * Replaces existing player tech knowledge. If only adding tech please use addTech() instead.
 	 * @param player
 	 * @param techs
