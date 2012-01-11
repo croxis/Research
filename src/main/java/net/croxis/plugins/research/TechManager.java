@@ -234,10 +234,14 @@ public class TechManager {
 		SQLPlayer sqlplayer = getSQLPlayer(player);
 		String techNames = "";
 		Iterator<Tech> techi = techs.iterator();
+		Tech tech;
 		while(techi.hasNext()){
-			techNames += techi.next().name;
-			if(techi.hasNext())
-				techNames += ",";
+			tech = techi.next();
+			if (tech != null){
+				techNames += tech.name;
+				if(techi.hasNext())
+					techNames += ",";
+			}
 		}
 		sqlplayer.setResearched(techNames);
 		plugin.getDatabase().save(sqlplayer);
