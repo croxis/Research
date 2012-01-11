@@ -187,7 +187,8 @@ public class TechManager {
 	 */
 	public static void addTech(String playerName, Tech tech){
 		OfflinePlayer player = plugin.getServer().getOfflinePlayer(playerName);
-		applyLearnedTech((Player) player, tech);
+		if (player.isOnline())
+			applyLearnedTech(player.getPlayer(), tech);
 		SQLPlayer sqlplayer = getSQLPlayer(playerName);
 		sqlplayer.setResearched(sqlplayer.getResearched() + "," + tech.name);
 		plugin.getDatabase().save(sqlplayer);
