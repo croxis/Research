@@ -2,14 +2,15 @@ package net.croxis.plugins.research;
 
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerListener;
 
 import java.util.HashSet;
 
-public class RPlayerListener extends PlayerListener{
-	@Override
+public class RPlayerListener implements Listener{
+	@EventHandler()
     public void onPlayerJoin(PlayerJoinEvent event) {
 		if(event.getPlayer().hasPermission("research")){
 			TechManager.initPlayer(event.getPlayer());
@@ -24,7 +25,7 @@ public class RPlayerListener extends PlayerListener{
 		}
     }
 	
-	@Override
+	@EventHandler()
 	public void onPlayerInteract(PlayerInteractEvent event){
 		if (event.getPlayer().getGameMode().equals(GameMode.CREATIVE))
 			return;

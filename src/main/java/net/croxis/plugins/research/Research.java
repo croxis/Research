@@ -121,9 +121,9 @@ public class Research extends JavaPlugin {
         
         // This should be it. Permission setups should happen onPlayerJoin
         
-        this.getServer().getPluginManager().registerEvent(Type.PLAYER_JOIN, playerListener, Priority.Normal, this);
-        this.getServer().getPluginManager().registerEvent(Type.BLOCK_BREAK, blockListener, Priority.Highest, this);
-        this.getServer().getPluginManager().registerEvent(Type.BLOCK_PLACE, blockListener, Priority.Highest, this);
+        this.getServer().getPluginManager().registerEvents(playerListener, this);
+        this.getServer().getPluginManager().registerEvents(blockListener, this);
+        this.getServer().getPluginManager().registerEvents(blockListener, this);
         this.getServer().getPluginManager().registerEvent(Type.CUSTOM_EVENT, new RInventoryListener(), Priority.Highest, this);
         
         System.out.println(this + " is now enabled!");
