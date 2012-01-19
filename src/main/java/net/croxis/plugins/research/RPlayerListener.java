@@ -20,7 +20,8 @@ public class RPlayerListener implements Listener{
 				t = new Tech();
 				t.name = "None";
 			}
-			event.getPlayer().sendMessage("You currently know " + TechManager.getResearched(event.getPlayer()).size() + " technologies" +
+			if(player.hasPermission("research.logininfo"))
+				event.getPlayer().sendMessage("You currently know " + TechManager.getResearched(event.getPlayer()).size() + " technologies" +
         		" and are currently researching " + t.name + ".");
 		}
     }
