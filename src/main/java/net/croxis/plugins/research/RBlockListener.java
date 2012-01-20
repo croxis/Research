@@ -8,7 +8,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import java.util.HashSet;
 
 public class RBlockListener implements Listener{
-	@EventHandler()
+	@EventHandler
 	public void onBlockBreak(BlockBreakEvent event){
 		if (event.getPlayer().getGameMode().equals(GameMode.CREATIVE))
 			return;
@@ -18,7 +18,7 @@ public class RBlockListener implements Listener{
 		}
 	}
 	
-	@EventHandler()
+	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent event){
 		if (event.getPlayer().getGameMode().equals(GameMode.CREATIVE))
 			return;

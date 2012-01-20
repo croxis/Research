@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import java.util.HashSet;
 
 public class RPlayerListener implements Listener{
-	@EventHandler()
+	@EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
 		if(event.getPlayer().hasPermission("research")){
 			TechManager.initPlayer(event.getPlayer());
@@ -26,7 +26,7 @@ public class RPlayerListener implements Listener{
 		}
     }
 	
-	@EventHandler()
+	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent event){
 		if (event.getPlayer().getGameMode().equals(GameMode.CREATIVE))
 			return;

@@ -1,10 +1,11 @@
 package net.croxis.plugins.research;
 
+import org.bukkit.event.Listener;
 import org.getspout.spoutapi.event.inventory.InventoryCraftEvent;
-import org.getspout.spoutapi.event.inventory.InventoryListener;
 import java.util.HashSet;
 
-public class RInventoryListener extends InventoryListener{
+public class RInventoryListener implements Listener{
+	
 	public void onInventoryCraft(InventoryCraftEvent event){
 		if (event.getPlayer().hasPermission("research")){
 			event.getResult().getTypeId();
