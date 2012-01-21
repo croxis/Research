@@ -16,9 +16,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Event.Priority;
-import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Research extends JavaPlugin {
@@ -56,11 +53,11 @@ public class Research extends JavaPlugin {
     	techManager = new TechManager(this);
     	// Set up default systems
     	debug = this.getConfig().getBoolean("debug", false);
-    	techManager.permissions = new HashSet<String>(this.getConfig().getStringList("default.permissions"));
-    	techManager.cantPlace = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantPlace"));
-    	techManager.cantBreak = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantBreak"));
-    	techManager.cantCraft = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantCraft"));
-    	techManager.cantUse = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantUse"));
+    	TechManager.permissions = new HashSet<String>(this.getConfig().getStringList("default.permissions"));
+    	TechManager.cantPlace = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantPlace"));
+    	TechManager.cantBreak = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantBreak"));
+    	TechManager.cantCraft = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantCraft"));
+    	TechManager.cantUse = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantUse"));
     	getConfig().options().copyDefaults(true);
         saveConfig();
         logInfo("Loaded default permissions. Now loading techs.");        
@@ -124,7 +121,7 @@ public class Research extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(playerListener, this);
         this.getServer().getPluginManager().registerEvents(blockListener, this);
         this.getServer().getPluginManager().registerEvents(blockListener, this);
-        this.getServer().getPluginManager().registerEvent(Type.CUSTOM_EVENT, new RInventoryListener(), Priority.Highest, this);
+        this.getServer().getPluginManager().registerEvents(new RInventoryListener(), this);
         
         System.out.println(this + " is now enabled!");
     }

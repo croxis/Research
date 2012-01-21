@@ -7,6 +7,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import java.util.HashSet;
 
+@SuppressWarnings("unused")
 public class RBlockListener implements Listener{
 	@EventHandler
 	public void onBlockBreak(BlockBreakEvent event){

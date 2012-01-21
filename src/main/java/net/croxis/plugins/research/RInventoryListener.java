@@ -4,6 +4,7 @@ import org.bukkit.event.Listener;
 import org.getspout.spoutapi.event.inventory.InventoryCraftEvent;
 import java.util.HashSet;
 
+@SuppressWarnings("unused")
 public class RInventoryListener implements Listener{
 	
 	public void onInventoryCraft(InventoryCraftEvent event){

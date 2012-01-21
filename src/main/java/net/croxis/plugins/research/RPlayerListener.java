@@ -9,6 +9,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.util.HashSet;
 
+@SuppressWarnings("unused")
 public class RPlayerListener implements Listener{
 	@EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
