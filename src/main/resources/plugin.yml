@@ -6,7 +6,7 @@ generator: http://dinnerbone.com/minecraft/tools/pluginator/
 main: net.croxis.plugins.research.Research
 name: Research
 startup: postworld
-version: '2'
+version: '2.1'
 commands:
   research:
     description: technology tree
