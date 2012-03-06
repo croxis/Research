@@ -91,21 +91,21 @@ public class Research extends JavaPlugin {
     		if(techConfig.contains(techName + ".canUse"))
         		tech.canUse = new HashSet<Integer>( techConfig.getIntegerList(techName + ".canUse"));
         	
-        	techManager.techs.put(techName, tech);
+        	TechManager.techs.put(techName, tech);
         	i++;
         }        
         logInfo(Integer.toString(i) + " techs loaded. Now linking tree.");
         
-        for (Tech tech : techManager.techs.values()){
+        for (Tech tech : TechManager.techs.values()){
         	// Check if it is a starting tech
         	//if(tech.preReqs.isEmpty()){
         	//	tech.parents.add(techManager.techs.get("root"));
         	//	techManager.techs.get("root").children.add(tech);
         	//} else {
         		for(String parentName : tech.preReqs){
-        			if(techManager.techs.containsKey(parentName)){
-        				tech.parents.add(techManager.techs.get(parentName));
-        				techManager.techs.get(parentName).children.add(tech);
+        			if(TechManager.techs.containsKey(parentName)){
+        				tech.parents.add(TechManager.techs.get(parentName));
+        				TechManager.techs.get(parentName).children.add(tech);
         			} else {
         				this.logWarning("Could not link " + tech.name + " with " + parentName + ". One of them is malformed!");
         			}
@@ -124,10 +124,6 @@ public class Research extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new RInventoryListener(), this);
         
         System.out.println(this + " is now enabled!");
-    }
-    
-    public static TechManager getTechManager(){
-    	return techManager;
     }
     
     public void reloadTechConfig() {
