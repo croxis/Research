@@ -6,10 +6,9 @@ generator: http://dinnerbone.com/minecraft/tools/pluginator/
 main: net.croxis.plugins.research.Research
 name: Research
 startup: postworld
-version: '2.1'
+version: '2.3'
 commands:
   research:
     description: technology tree
     permission: research.admin
     useage: /<command> [player]
-depend: ["Spout"]
