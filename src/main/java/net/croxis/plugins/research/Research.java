@@ -14,6 +14,7 @@ import javax.persistence.PersistenceException;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -29,6 +30,8 @@ public class Research extends JavaPlugin {
 	private File techConfigFile = null;
 	private RBlockListener blockListener = new RBlockListener();
 	private RPlayerListener playerListener = new RPlayerListener();
+	
+	public static HashSet<Integer> validIds;
 	
     public void onDisable() {
         // TODO: Place any custom disable code here.
@@ -54,10 +57,21 @@ public class Research extends JavaPlugin {
     	// Set up default systems
     	debug = this.getConfig().getBoolean("debug", false);
     	TechManager.permissions = new HashSet<String>(this.getConfig().getStringList("default.permissions"));
-    	TechManager.cantPlace = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantPlace"));
-    	TechManager.cantBreak = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantBreak"));
-    	TechManager.cantCraft = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantCraft"));
+    	TechManager.canPlace = new HashSet<Integer>( this.getConfig().getIntegerList("default.canPlace"));
+    	TechManager.canBreak = new HashSet<Integer>( this.getConfig().getIntegerList("default.canBreak"));
+    	TechManager.canCraft = new HashSet<Integer>( this.getConfig().getIntegerList("default.canCraft"));
     	TechManager.cantUse = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantUse"));
+    	
+    	ConfigurationSection ranges = getConfig().getConfigurationSection("ranges");
+    	Set<String> keys = ranges.getKeys(false);   
+    	for (String key : keys){
+    		List<Integer> item = getConfig().getIntegerList("ranges." + key);
+    		for(int i = item.get(0); i < item.get(1); i++){
+    			validIds.add(i);
+    		}
+    	}
+    	logInfo("Valid Ids: " + validIds.toString());
+    	
     	getConfig().options().copyDefaults(true);
         saveConfig();
         logInfo("Loaded default permissions. Now loading techs.");        

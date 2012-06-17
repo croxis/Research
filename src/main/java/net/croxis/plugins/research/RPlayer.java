@@ -7,9 +7,10 @@ public class RPlayer {
 	//public String cantplace = "";
 	//public String cantbuild = "";
 	//public String cantcraft = "";
-	public HashSet<Integer> cantPlace = new HashSet<Integer>();
-	public HashSet<Integer> cantBreak = new HashSet<Integer>();
-	public HashSet<Integer> cantCraft = new HashSet<Integer>();
-	public HashSet<Integer> cantUse = new HashSet<Integer>();
+	//public HashSet<Integer> cantPlace = new HashSet<Integer>();
+	public HashSet<Integer> cantPlace = Research.validIds;
+	public HashSet<Integer> cantBreak = Research.validIds;
+	public HashSet<Integer> cantCraft = Research.validIds;
+	public HashSet<Integer> cantUse = Research.validIds;
 	public HashSet<String> permissions = new HashSet<String>();
 }

@@ -18,9 +18,9 @@ public class TechManager {
 	public static HashMap <String, Tech> techs = new HashMap<String, Tech>();
 	public static HashMap <Player, RPlayer> players = new HashMap<Player, RPlayer>();
 	public static HashSet<String> permissions;
-	public static HashSet<Integer> cantPlace;
-	public static HashSet<Integer> cantBreak;
-	public static HashSet<Integer> cantCraft;
+	public static HashSet<Integer> canPlace;
+	public static HashSet<Integer> canBreak;
+	public static HashSet<Integer> canCraft;
 	public static HashSet<Integer> cantUse;
 	private static Research plugin;
 	
@@ -38,9 +38,12 @@ public class TechManager {
 			return;
 		RPlayer rplayer = new RPlayer();
 		rplayer.name = player.getName();
-		rplayer.cantPlace.addAll(cantPlace);
-		rplayer.cantBreak.addAll(cantBreak);
-		rplayer.cantCraft.addAll(cantCraft);
+		//rplayer.cantPlace.addAll(canPlace);
+		//rplayer.cantBreak.addAll(canBreak);
+		//rplayer.cantCraft.addAll(canCraft);
+		rplayer.cantPlace.removeAll(canPlace);
+		rplayer.cantBreak.removeAll(canBreak);
+		rplayer.cantCraft.removeAll(canCraft);
 		rplayer.cantUse.addAll(cantUse);
 		rplayer.permissions.addAll(permissions);
 		/*for(int item : plugin.cantPlace)
