@@ -31,7 +31,7 @@ public class Research extends JavaPlugin {
 	private RBlockListener blockListener = new RBlockListener();
 	private RPlayerListener playerListener = new RPlayerListener();
 	
-	public static HashSet<Integer> validIds;
+	public static HashSet<Integer> validIds = new HashSet<Integer>();
 	
     public void onDisable() {
         // TODO: Place any custom disable code here.
@@ -70,12 +70,12 @@ public class Research extends JavaPlugin {
     			validIds.add(i);
     		}
     	}
-    	logInfo("Valid Ids: " + validIds.toString());
+
     	
     	getConfig().options().copyDefaults(true);
         saveConfig();
         logInfo("Loaded default permissions. Now loading techs.");        
-        
+    	logInfo("Valid Ids: " + validIds.toString());
         // Load tech config
         this.reloadTechConfig();
         getTechConfig().options().copyDefaults(true);
