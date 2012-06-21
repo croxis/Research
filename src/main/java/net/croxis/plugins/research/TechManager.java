@@ -44,7 +44,7 @@ public class TechManager {
 		rplayer.cantPlace.removeAll(canPlace);
 		rplayer.cantBreak.removeAll(canBreak);
 		rplayer.cantCraft.removeAll(canCraft);
-		rplayer.cantUse.addAll(cantUse);
+		rplayer.cantUse = cantUse;
 		rplayer.permissions.addAll(permissions);
 		/*for(int item : plugin.cantPlace)
 			rplayer.cantPlace.add(item);
@@ -61,6 +61,9 @@ public class TechManager {
 		}
 		Research.logDebug("Init player " + rplayer.name);
 		Research.logDebug("Can't Place: " + rplayer.cantPlace.toString());
+		Research.logDebug("Can't Break: " + rplayer.cantBreak.toString());
+		Research.logDebug("Can't Craft: " + rplayer.cantPlace.toString());
+		Research.logDebug("Can't Use: " + rplayer.cantUse.toString());
 	}
 	
 	public static void unloadPlayer(Player player){
