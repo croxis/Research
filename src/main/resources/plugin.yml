@@ -11,5 +11,5 @@ commands:
   research:
     description: technology tree
     permission: research.admin
-    useage: /<command> [player]
+    useage: /<command> [player] or /<command> reload
 

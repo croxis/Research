@@ -53,7 +53,34 @@ public class Research extends JavaPlugin {
 
 	public void onEnable() {
     	logger = Logger.getLogger(JavaPlugin.class.getName());
-    	techManager = new TechManager(this);
+    	loadPlugin();
+        logInfo("Mounting player database.");
+        setupDatabase();
+        logInfo("Database mounted. Setup complete.");
+        
+        // This should be it. Permission setups should happen onPlayerJoin
+        
+        this.getServer().getPluginManager().registerEvents(playerListener, this);
+        this.getServer().getPluginManager().registerEvents(blockListener, this);
+        this.getServer().getPluginManager().registerEvents(blockListener, this);
+        this.getServer().getPluginManager().registerEvents(new RInventoryListener(), this);
+        
+        System.out.println(this + " is now enabled!");
+    }
+	
+	public void reloadPlugin(){
+		unloadPlugin();
+		loadPlugin();
+	}
+	
+	public void unloadPlugin(){
+		techManager = null;
+		validIds = new HashSet<Integer>();
+		
+	}
+	
+	public void loadPlugin(){
+		techManager = new TechManager(this);
     	// Set up default systems
     	debug = this.getConfig().getBoolean("debug", false);
     	TechManager.permissions = new HashSet<String>(this.getConfig().getStringList("default.permissions"));
@@ -126,19 +153,8 @@ public class Research extends JavaPlugin {
         		}
         	//}
         }
-        logInfo("Tech tree linking complete. Mounting player database.");
-        setupDatabase();
-        logInfo("Database mounted. Setup complete.");
-        
-        // This should be it. Permission setups should happen onPlayerJoin
-        
-        this.getServer().getPluginManager().registerEvents(playerListener, this);
-        this.getServer().getPluginManager().registerEvents(blockListener, this);
-        this.getServer().getPluginManager().registerEvents(blockListener, this);
-        this.getServer().getPluginManager().registerEvents(new RInventoryListener(), this);
-        
-        System.out.println(this + " is now enabled!");
-    }
+        logInfo("Tech tree linking complete.");
+	}
     
     public void reloadTechConfig() {
     	if (techConfigFile == null) {
@@ -195,6 +211,9 @@ public class Research extends JavaPlugin {
     		sender.sendMessage("CantBreak: " + rplayer.cantBreak.toString());
     		sender.sendMessage("CantCraft: " + rplayer.cantCraft.toString());
     		sender.sendMessage("CantUse: " + rplayer.cantUse.toString());
+    	} else if (args[0].equalsIgnoreCase("reload")){
+    		sender.sendMessage("Initiating reload");
+    		reloadPlugin();
     	}
     	return true;
     }
