@@ -59,8 +59,8 @@ public class TechManager {
 		for(String techName : sqlplayer.getResearched().split(",")){
 			applyLearnedTech(player, techs.get(techName));
 		}
-		plugin.logDebug("Init player " + rplayer.name);
-		plugin.logDebug("Can't Place: " + rplayer.cantPlace.toString());
+		Research.logDebug("Init player " + rplayer.name);
+		Research.logDebug("Can't Place: " + rplayer.cantPlace.toString());
 	}
 	
 	public static void unloadPlayer(Player player){
@@ -148,19 +148,19 @@ public class TechManager {
 			return;
 		if(!players.containsKey(player))
 			return;
-		plugin.logDebug("Applying tech: " + tech.name + " to player " + player.getName());
+		Research.logDebug("Applying tech: " + tech.name + " to player " + player.getName());
 		RPlayer rplayer = players.get(player);
-		plugin.logDebug("Previous cantPlace: " + rplayer.cantPlace.toString());
+		Research.logDebug("Previous cantPlace: " + rplayer.cantPlace.toString());
 		rplayer.cantPlace.removeAll(tech.canPlace);
-		plugin.logDebug("New cantPlace: " + rplayer.cantPlace.toString());
-		plugin.logDebug("Previous cantBreak: " + rplayer.cantBreak.toString());
-		plugin.logDebug("Tech canBreak: " + tech.canBreak.toString());
+		Research.logDebug("New cantPlace: " + rplayer.cantPlace.toString());
+		Research.logDebug("Previous cantBreak: " + rplayer.cantBreak.toString());
+		Research.logDebug("Tech canBreak: " + tech.canBreak.toString());
 		rplayer.cantBreak.removeAll(tech.canBreak);
-		plugin.logDebug("New cantBreak: " + rplayer.cantBreak.toString());
-		plugin.logDebug("Previous cantCraft: " + rplayer.cantCraft.toString());
-		plugin.logDebug("Tech canCraft: " + tech.canCraft.toString());
+		Research.logDebug("New cantBreak: " + rplayer.cantBreak.toString());
+		Research.logDebug("Previous cantCraft: " + rplayer.cantCraft.toString());
+		Research.logDebug("Tech canCraft: " + tech.canCraft.toString());
 		rplayer.cantCraft.removeAll(tech.canCraft);
-		plugin.logDebug("New cantCraft: " + rplayer.cantCraft.toString());
+		Research.logDebug("New cantCraft: " + rplayer.cantCraft.toString());
 		rplayer.cantUse.removeAll(tech.canUse);
 		rplayer.permissions.addAll(tech.permissions);
 		//TODO: Process permission nodes
@@ -349,10 +349,10 @@ public class TechManager {
 				available.add(t);
 		}
 		
-		plugin.logDebug("AvailableTech for " + playerName);
-		plugin.logDebug("unknown: " + unknowns.toString());
-		plugin.logDebug("available: " + available.toString());
-		plugin.logDebug("researched: " + researched.toString());
+		Research.logDebug("AvailableTech for " + playerName);
+		Research.logDebug("unknown: " + unknowns.toString());
+		Research.logDebug("available: " + available.toString());
+		Research.logDebug("researched: " + researched.toString());
 		
 		return available;
 		
