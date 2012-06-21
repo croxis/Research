@@ -71,9 +71,10 @@ public class TechManager {
 		PermissionAttachment att = player.addAttachment(plugin);
 		for(String techName : sqlplayer.getResearched().split(",")){
 			Tech tech = techs.get(techName);
-			for (String perm : tech.permissions){
-				att.setPermission(perm, false);
-			}
+			if (tech.permissions != null)
+				for (String perm : tech.permissions){
+					att.setPermission(perm, false);
+				}
 		}
 		player.recalculatePermissions();
 		players.remove(player);
