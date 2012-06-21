@@ -14,8 +14,10 @@ public class RBlockListener implements Listener{
 		if (event.getPlayer().getGameMode().equals(GameMode.CREATIVE))
 			return;
 		if (event.getPlayer().hasPermission("research")){
-			if(TechManager.players.get(event.getPlayer()).cantBreak.contains(event.getBlock().getTypeId()))
+			if(TechManager.players.get(event.getPlayer()).cantBreak.contains(event.getBlock().getTypeId())){
+				Research.logDebug("Canceling Break: " + event.getPlayer().getName() + "|" + event.getBlock().getType().toString());
 				event.setCancelled(true);
+			}
 		}
 	}
 	
@@ -24,8 +26,10 @@ public class RBlockListener implements Listener{
 		if (event.getPlayer().getGameMode().equals(GameMode.CREATIVE))
 			return;
 		if (event.getPlayer().hasPermission("research")){
-			if(TechManager.players.get(event.getPlayer()).cantPlace.contains(event.getBlock().getTypeId()))
+			if(TechManager.players.get(event.getPlayer()).cantPlace.contains(event.getBlock().getTypeId())){
+				Research.logDebug("Canceling Place: " + event.getPlayer().getName() + "|" + event.getBlock().getType().toString());
 				event.setCancelled(true);
+			}
 		}
 	}
 }

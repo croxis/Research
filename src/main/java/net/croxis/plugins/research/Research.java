@@ -21,9 +21,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Research extends JavaPlugin {
 	static TechManager techManager;
-	public boolean debug = false;
+	public static boolean debug = false;
 	
-	public Logger logger;
+	public static Logger logger;
 	
 	private FileConfiguration techConfig = null;
 	//private File techConfigFile = new File(getDataFolder(), "tech.yml");
@@ -38,12 +38,12 @@ public class Research extends JavaPlugin {
         System.out.println(this + " is now disabled!");
     }
     
-    public void logDebug(String message){
+    public static void logDebug(String message){
     	if(debug)
     		logger.log(Level.INFO, "[Research - Debug] " + message);
     }
     
-    public void logInfo(String message){
+    public static void logInfo(String message){
     	logger.log(Level.INFO, "[Research] " + message);
     }
     
@@ -75,7 +75,7 @@ public class Research extends JavaPlugin {
     	getConfig().options().copyDefaults(true);
         saveConfig();
         logInfo("Loaded default permissions. Now loading techs.");        
-    	logInfo("Valid Ids: " + validIds.toString());
+    	logDebug("Valid Ids: " + validIds.toString());
         // Load tech config
         this.reloadTechConfig();
         getTechConfig().options().copyDefaults(true);
