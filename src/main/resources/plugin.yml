@@ -12,4 +12,13 @@ commands:
     description: technology tree
     permission: research.admin
     useage: /<command> [player] or /<command> reload
-
+permissions:
+  research:
+    description: Activates research for that user
+    default: true
+  research.logininfo:
+    description: Shows research info when a player logs in
+    default: true
+  research.admin:
+    description: Access to admin settings
+    default: op
