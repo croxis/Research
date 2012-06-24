@@ -17,6 +17,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Research extends JavaPlugin {
@@ -71,6 +72,20 @@ public class Research extends JavaPlugin {
 	public void reloadPlugin(){
 		unloadPlugin();
 		loadPlugin();
+		
+		for (Player player : getServer().getOnlinePlayers()){
+			if(player.hasPermission("research")){
+				TechManager.initPlayer(player);
+				Tech t = TechManager.getCurrentResearch(player);
+				if(t == null){
+					t = new Tech();
+					t.name = "None";
+				}
+				if(player.hasPermission("research.logininfo"))
+					player.sendMessage("You currently know " + TechManager.getResearched(player).size() + " technologies" +
+	        		" and are currently researching " + t.name + ".");
+			}
+		}
 	}
 	
 	public void unloadPlugin(){
