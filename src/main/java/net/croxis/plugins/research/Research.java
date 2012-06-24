@@ -214,6 +214,9 @@ public class Research extends JavaPlugin {
     	} else if (args[0].equalsIgnoreCase("reload")){
     		sender.sendMessage("Initiating reload");
     		reloadPlugin();
+    	} else if (args[0].equalsIgnoreCase("debug")){
+    		debug = !debug;
+    		sender.sendMessage("Research debug toggled");
     	}
     	return true;
     }
