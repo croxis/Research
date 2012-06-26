@@ -32,6 +32,7 @@ public class RPlayerListener implements Listener{
 		if (event.getPlayer().getGameMode().equals(GameMode.CREATIVE))
 			return;
 		if(event.getPlayer().hasPermission("research") && event.hasItem()){
+			Research.logDebug("Interact Event: " + event.getPlayer().getName() + "|" + Integer.toString(event.getItem().getTypeId()));
 			if(TechManager.players.get(event.getPlayer()).cantUse.contains(event.getItem().getTypeId())){
 				Research.logDebug("Canceling Interaction: " + event.getPlayer().getName() + "|" + event.getMaterial().toString());
 				event.setCancelled(true);
