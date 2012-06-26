@@ -11,8 +11,9 @@ public class RInventoryListener implements Listener{
 	public void onInventoryCraft(CraftItemEvent event){
 		if (event.getWhoClicked().hasPermission("research")){
 			//if(TechManager.players.get(event.getWhoClicked()).cantCraft.contains(event.getResult().getTypeId()) && event.getPlayer().hasPermission("research"))
+			Research.logDebug("Craft Event: " + event.getWhoClicked().getName() + "|" + Integer.toString(event.getRecipe().getResult().getTypeId()) +"|"+ event.getRecipe().toString());
 			if(TechManager.players.get(event.getWhoClicked()).cantCraft.contains(event.getRecipe().getResult().getTypeId())){
-				Research.logDebug("Canceling Craft: " + event.getWhoClicked().getName() + "|" + event.getRecipe().toString());
+				Research.logDebug("Canceling Craft: " + event.getWhoClicked().getName() + "|" + Integer.toString(event.getRecipe().getResult().getTypeId()) +"|"+ event.getRecipe().toString());
 				event.setCancelled(true);
 			}
 		}
