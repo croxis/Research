@@ -154,17 +154,18 @@ public class TechManager {
 			return;
 		Research.logDebug("Applying tech: " + tech.name + " to player " + player.getName());
 		RPlayer rplayer = players.get(player);
-		Research.logDebug("Previous cantPlace: " + rplayer.cantPlace.toString());
+		//Research.logDebug("Previous cantPlace: " + rplayer.cantPlace.toString());
+		Research.logDebug("Tech canPlace: " + tech.canPlace.toString());
 		rplayer.cantPlace.removeAll(tech.canPlace);
-		Research.logDebug("New cantPlace: " + rplayer.cantPlace.toString());
-		Research.logDebug("Previous cantBreak: " + rplayer.cantBreak.toString());
+		//Research.logDebug("New cantPlace: " + rplayer.cantPlace.toString());
+		//Research.logDebug("Previous cantBreak: " + rplayer.cantBreak.toString());
 		Research.logDebug("Tech canBreak: " + tech.canBreak.toString());
 		rplayer.cantBreak.removeAll(tech.canBreak);
-		Research.logDebug("New cantBreak: " + rplayer.cantBreak.toString());
-		Research.logDebug("Previous cantCraft: " + rplayer.cantCraft.toString());
+		//Research.logDebug("New cantBreak: " + rplayer.cantBreak.toString());
+		//Research.logDebug("Previous cantCraft: " + rplayer.cantCraft.toString());
 		Research.logDebug("Tech canCraft: " + tech.canCraft.toString());
 		rplayer.cantCraft.removeAll(tech.canCraft);
-		Research.logDebug("New cantCraft: " + rplayer.cantCraft.toString());
+		//Research.logDebug("New cantCraft: " + rplayer.cantCraft.toString());
 		rplayer.cantUse.removeAll(tech.canUse);
 		rplayer.permissions.addAll(tech.permissions);
 		//TODO: Process permission nodes

@@ -104,6 +104,9 @@ public class Research extends JavaPlugin {
     	TechManager.canCraft = new HashSet<Integer>( this.getConfig().getIntegerList("default.canCraft"));
     	TechManager.cantUse = new HashSet<Integer>( this.getConfig().getIntegerList("default.cantUse"));
     	
+    	Research.logDebug("==Defaults==");
+    	Research.logDebug("Can place: " + TechManager.canPlace.toString());
+    	
     	ConfigurationSection ranges = getConfig().getConfigurationSection("ranges");
     	Set<String> keys = ranges.getKeys(false);   
     	for (String key : keys){
