@@ -154,6 +154,7 @@ public class TechManager {
 			return;
 		Research.logDebug("Applying tech: " + tech.name + " to player " + player.getName());
 		RPlayer rplayer = players.get(player);
+		Research.logDebug("Has 20 before?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		//Research.logDebug("Previous cantPlace: " + rplayer.cantPlace.toString());
 		Research.logDebug("Tech canPlace: " + tech.canPlace.toString());
 		rplayer.cantPlace.removeAll(tech.canPlace);
@@ -168,7 +169,7 @@ public class TechManager {
 		//Research.logDebug("New cantCraft: " + rplayer.cantCraft.toString());
 		rplayer.cantUse.removeAll(tech.canUse);
 		rplayer.permissions.addAll(tech.permissions);
-		//TODO: Process permission nodes
+		Research.logDebug("Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		PermissionAttachment att = player.addAttachment(plugin);
 		for(String perm : tech.permissions){
 			att.setPermission(perm, true);
