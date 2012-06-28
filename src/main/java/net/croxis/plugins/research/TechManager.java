@@ -41,7 +41,9 @@ public class TechManager {
 		//rplayer.cantPlace.addAll(canPlace);
 		//rplayer.cantBreak.addAll(canBreak);
 		//rplayer.cantCraft.addAll(canCraft);
+		Research.logDebug("Init Has 20 before?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		rplayer.cantPlace.removeAll(canPlace);
+		Research.logDebug("Init Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		rplayer.cantBreak.removeAll(canBreak);
 		rplayer.cantCraft.removeAll(canCraft);
 		rplayer.cantUse = cantUse;
