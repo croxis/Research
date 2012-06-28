@@ -58,6 +58,7 @@ public class TechManager {
 			rplayer.permissions.add(item);*/
 		players.put(player, rplayer);
 		SQLPlayer sqlplayer = getSQLPlayer(player);
+		Research.logDebug("Pre Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		for(String techName : sqlplayer.getResearched().split(",")){
 			applyLearnedTech(player, techs.get(techName));
 		}
