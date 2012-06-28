@@ -48,6 +48,7 @@ public class TechManager {
 		rplayer.cantCraft.removeAll(canCraft);
 		rplayer.cantUse = cantUse;
 		rplayer.permissions.addAll(permissions);
+		Research.logDebug("Zog Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		/*for(int item : plugin.cantPlace)
 			rplayer.cantPlace.add(item);
 		for(int item : plugin.cantBreak)
@@ -57,6 +58,7 @@ public class TechManager {
 		for(String item : plugin.permissions)
 			rplayer.permissions.add(item);*/
 		players.put(player, rplayer);
+		Research.logDebug("Yack Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		SQLPlayer sqlplayer = getSQLPlayer(player);
 		Research.logDebug("Pre Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		for(String techName : sqlplayer.getResearched().split(",")){
