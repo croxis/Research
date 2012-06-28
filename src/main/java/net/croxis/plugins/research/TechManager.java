@@ -45,8 +45,11 @@ public class TechManager {
 		rplayer.cantPlace.removeAll(canPlace);
 		Research.logDebug("Init Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		rplayer.cantBreak.removeAll(canBreak);
+		Research.logDebug("A Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		rplayer.cantCraft.removeAll(canCraft);
+		Research.logDebug("B Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		rplayer.cantUse = cantUse;
+		Research.logDebug("C Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		rplayer.permissions.addAll(permissions);
 		Research.logDebug("Zog Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		/*for(int item : plugin.cantPlace)
