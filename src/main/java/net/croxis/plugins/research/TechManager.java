@@ -41,11 +41,15 @@ public class TechManager {
 		//rplayer.cantPlace.addAll(canPlace);
 		//rplayer.cantBreak.addAll(canBreak);
 		//rplayer.cantCraft.addAll(canCraft);
-		Research.logDebug("Init Has 20 before?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
+		Research.logDebug("Init Has 20 before?: " + rplayer.cantPlace.contains(20));
+		Research.logDebug(rplayer.cantPlace.toString());
 		rplayer.cantPlace.removeAll(canPlace);
-		Research.logDebug("Init Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
+		Research.logDebug(rplayer.cantPlace.toString());
+		Research.logDebug("Init Has 20 after?: " + rplayer.cantPlace.contains(20));
+		Research.logDebug(rplayer.cantPlace.toString());
 		rplayer.cantBreak.removeAll(canBreak);
-		Research.logDebug("A Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
+		Research.logDebug("A Has 20 after?: " + rplayer.cantPlace.contains(20));
+		Research.logDebug(rplayer.cantPlace.toString());
 		rplayer.cantCraft.removeAll(canCraft);
 		Research.logDebug("B Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		rplayer.cantUse = cantUse;
@@ -61,9 +65,7 @@ public class TechManager {
 		for(String item : plugin.permissions)
 			rplayer.permissions.add(item);*/
 		players.put(player, rplayer);
-		Research.logDebug("Yack Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		SQLPlayer sqlplayer = getSQLPlayer(player);
-		Research.logDebug("Pre Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		for(String techName : sqlplayer.getResearched().split(",")){
 			applyLearnedTech(player, techs.get(techName));
 		}
