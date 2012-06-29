@@ -41,21 +41,15 @@ public class TechManager {
 		//rplayer.cantPlace.addAll(canPlace);
 		//rplayer.cantBreak.addAll(canBreak);
 		//rplayer.cantCraft.addAll(canCraft);
-		Research.logDebug("Init Has 20 before?: " + rplayer.cantPlace.contains(20));
 		Research.logDebug(rplayer.cantPlace.toString());
 		rplayer.cantPlace.removeAll(canPlace);
 		Research.logDebug(rplayer.cantPlace.toString());
-		Research.logDebug("Init Has 20 after?: " + rplayer.cantPlace.contains(20));
 		Research.logDebug(rplayer.cantPlace.toString());
 		rplayer.cantBreak.removeAll(canBreak);
-		Research.logDebug("A Has 20 after?: " + rplayer.cantPlace.contains(20));
 		Research.logDebug(rplayer.cantPlace.toString());
 		rplayer.cantCraft.removeAll(canCraft);
-		Research.logDebug("B Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		rplayer.cantUse = cantUse;
-		Research.logDebug("C Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		rplayer.permissions.addAll(permissions);
-		Research.logDebug("Zog Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		/*for(int item : plugin.cantPlace)
 			rplayer.cantPlace.add(item);
 		for(int item : plugin.cantBreak)
@@ -164,7 +158,6 @@ public class TechManager {
 			return;
 		Research.logDebug("Applying tech: " + tech.name + " to player " + player.getName());
 		RPlayer rplayer = players.get(player);
-		Research.logDebug("Has 20 before?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		//Research.logDebug("Previous cantPlace: " + rplayer.cantPlace.toString());
 		Research.logDebug("Tech canPlace: " + tech.canPlace.toString());
 		rplayer.cantPlace.removeAll(tech.canPlace);
@@ -179,7 +172,6 @@ public class TechManager {
 		//Research.logDebug("New cantCraft: " + rplayer.cantCraft.toString());
 		rplayer.cantUse.removeAll(tech.canUse);
 		rplayer.permissions.addAll(tech.permissions);
-		Research.logDebug("Has 20 after?: " + Boolean.toString(rplayer.cantPlace.contains(20)));
 		PermissionAttachment att = player.addAttachment(plugin);
 		for(String perm : tech.permissions){
 			att.setPermission(perm, true);
