@@ -415,5 +415,9 @@ public class TechManager {
 		SQLPlayer sqlplayer = getSQLPlayer(playerName);
 		return techs.get(sqlplayer.getCurrentResearch());
 	}
+	
+	public static boolean hasTech(String playerName, String techName){
+		return getResearched(playerName).contains(TechManager.techs.get(techName));
+	}
 
 }
