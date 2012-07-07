@@ -122,9 +122,9 @@ public class Research extends JavaPlugin {
         logInfo("Loaded default permissions. Now loading techs.");        
     	logDebug("Valid Ids: " + validIds.toString());
         // Load tech config
-        this.reloadTechConfig();
-        getTechConfig().options().copyDefaults(true);
-        saveTechConfig();
+        reloadTechConfig();
+        //getTechConfig().options().copyDefaults(true);
+        //saveTechConfig();
         
         Set<String> techNames = techConfig.getKeys(false);
         int i = 0;
