@@ -236,6 +236,6 @@ public class Research extends JavaPlugin {
     		debug = !debug;
     		sender.sendMessage("Research debug toggled");
     	}
-    	return true;
+    	return false;
     }
 }
