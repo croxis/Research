@@ -11,6 +11,8 @@ import java.util.HashSet;
 public class RBlockListener implements Listener{
 	@EventHandler
 	public void onBlockBreak(BlockBreakEvent event){
+		if (event.getPlayer() == null)
+			return;
 		if (event.getPlayer().getGameMode().equals(GameMode.CREATIVE))
 			return;
 		if (event.getPlayer().hasPermission("research")){
@@ -23,6 +25,8 @@ public class RBlockListener implements Listener{
 	
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent event){
+		if (event.getPlayer() == null)
+			return;
 		if (event.getPlayer().getGameMode().equals(GameMode.CREATIVE))
 			return;
 		if (event.getPlayer().hasPermission("research")){
