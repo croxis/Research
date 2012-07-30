@@ -419,6 +419,8 @@ public class TechManager {
 	}
 	
 	public static boolean hasTech(String playerName, String techName){
+		if (techName.equalsIgnoreCase("none"))
+			return true;
 		return getResearched(playerName).contains(TechManager.techs.get(techName));
 	}
 

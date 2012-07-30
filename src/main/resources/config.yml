@@ -1,4 +1,5 @@
 debug: false
+loginText: true
 # Default permissions and abilities for players with no technology researched.
 # This is a white-list system.
 # The permissions list are what permissions players HAVE (can be ignored if you are using another permission manager)

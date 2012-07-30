@@ -22,6 +22,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Research extends JavaPlugin {
 	static TechManager techManager;
+	public static boolean loginText = true;
 	public static boolean debug = false;
 	
 	public static Logger logger;
@@ -98,6 +99,7 @@ public class Research extends JavaPlugin {
 		techManager = new TechManager(this);
     	// Set up default systems
     	debug = this.getConfig().getBoolean("debug", false);
+    	loginText = getConfig().getBoolean("loginText", true);
     	TechManager.permissions = new HashSet<String>(this.getConfig().getStringList("default.permissions"));
     	TechManager.canPlace = new HashSet<Integer>( this.getConfig().getIntegerList("default.canPlace"));
     	TechManager.canBreak = new HashSet<Integer>( this.getConfig().getIntegerList("default.canBreak"));
